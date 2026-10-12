@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Keszi Roland · Adattudományi portfólió</title>
+  <meta name="description" content="Keszi Roland adattudományi és MI-projektjei: regressziós modellezés, nagy nyelvi modellek értékelése, NLP és adatvizualizáció, módszerekkel, eredményekkel és kóddal.">
+  <meta property="og:title" content="Keszi Roland · Adattudományi portfólió">
+  <meta property="og:description" content="Adattudományi és MI-projektek módszerekkel, eredményekkel és kóddal.">
+  <meta property="og:image" content="https://rolandkeszi.github.io/assets/img/pp_model_comparison.png">
+  <link rel="alternate" hreflang="en" href="https://rolandkeszi.github.io/">
+  <link rel="alternate" hreflang="hu" href="https://rolandkeszi.github.io/hu/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="top">
+      <a class="name" href="./">Keszi Roland</a>
+      <nav><a href="#projects">Projektek</a><a href="https://github.com/rolandkeszi">GitHub</a><a href="https://www.linkedin.com/in/rolandkeszi/">LinkedIn</a><span class="lang"><a href="../" hreflang="en" lang="en" title="English"><svg viewBox="0 0 60 30" aria-hidden="true"><clipPath id="uk-t"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath><path d="M0,0 v30 h60 v-30 z" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#uk-t)" stroke="#C8102E" stroke-width="4"/><path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/><path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/></svg><span class="sr">English</span></a><a class="active" aria-current="true" href="./" hreflang="hu" lang="hu" title="Magyar"><svg viewBox="0 0 6 3" aria-hidden="true"><rect width="6" height="1" fill="#CE2939"/><rect y="1" width="6" height="1" fill="#fff"/><rect y="2" width="6" height="1" fill="#477050"/></svg><span class="sr">Magyar</span></a></span></nav>
+    </header>
+
+    <section class="intro">
+      <img class="avatar" src="../assets/img/avatar.jpg" alt="Keszi Roland portréja" width="128" height="128">
+      <h1>Keszi Roland</h1>
+      <p class="role">Adattudomány és mesterséges intelligencia</p>
+      <p>Prediktív modelleket építek és értékelek a klasszikus regressziótól a nagy nyelvi modellekig, és egy eredmény érthető magyarázatát ugyanolyan fontosnak tartom, mint magát az eredményt.</p>
+      <p>Az alábbi projektek mindegyike bemutatja a kérdést, az adatokat, a módszert és a következtetéseket; a teljes kód a GitHubon érhető el.</p>
+      <div class="links"><a href="https://github.com/rolandkeszi">GitHub</a><a href="https://www.linkedin.com/in/rolandkeszi/">LinkedIn</a></div>
+    </section>
+
+    <h2 class="section" id="projects">Projektek</h2>
+    <p class="lang-note">A részletes esettanulmányok angol nyelvűek.</p>
+
+    <div class="project">
+      <a class="thumb" href="../projects/power-plant.html"><img src="../assets/img/pp_thumb.png" alt="Scatter plot: plant output falls as ambient temperature rises"></a>
+      <div>
+        <h3><a href="../projects/power-plant.html">Erőművi teljesítmény becslése regressziós modellekkel</a></h3>
+        <p>Mennyi villamos energiát termel egy kombinált ciklusú erőmű adott időjárási körülmények között? A feltáró elemzésből kiindulva lineáris, polinomiális, lasso-, ridge- és neurálisháló-modelleket hasonlítottam össze. Egy jól értelmezhető lineáris modellt választottam (R² = 0,93), amelyet keresztvalidációval és független mintán is ellenőriztem.</p>
+        <div class="meta"><a href="../projects/power-plant.html">Esettanulmány</a><a href="https://github.com/rolandkeszi/power-plant-output-prediction">Kód</a>Python · scikit-learn · SPSS</div>
+      </div>
+    </div>
+
+    <div class="project">
+      <a class="thumb" href="../projects/process-mining.html"><img src="../assets/img/pm_heuristic_net.png" alt="Heuristic net of patient pathways"></a>
+      <div>
+        <h3><a href="../projects/process-mining.html">Betegutak és kórházi erőforrások: folyamatbányászat</a></h3>
+        <p>Egy 100 beteg adatait tartalmazó kórházi eseménynaplóból rekonstruálom az ellátási utat, a lépések közötti időket és a személyzet terhelését. Az eszközök: közvetlen követési gráfok, Petri-hálók, BPMN és heurisztikus háló; az alfa-, induktív és heurisztikus algoritmusokat illeszkedés, pontosság, általánosítás és egyszerűség szerint hasonlítom össze.</p>
+        <div class="meta"><a href="../projects/process-mining.html">Esettanulmány</a><a href="https://github.com/rolandkeszi/hospital-process-mining">Kód</a>Python · PM4Py · Graphviz</div>
+      </div>
+    </div>
+
+    <div class="project">
+      <a class="thumb" href="../projects/network-analysis.html"><img src="../assets/img/sna_01_network_hubs.png" alt="Facebook friendship network with hubs highlighted"></a>
+      <div>
+        <h3><a href="../projects/network-analysis.html">Hálózati struktúrák a szakirodalomban, a közösségi médiában és a szövegekben</a></h3>
+        <p>A szentimentelemzés szakirodalmának térképe OpenAlex-adatokból, egy 4039 felhasználós, skálafüggetlen Facebook-ismeretségi háló három domináns csomóponttal, valamint politikai tweetek hasonlósági hálójának tematikus klaszterei.</p>
+        <div class="meta"><a href="../projects/network-analysis.html">Esettanulmány</a><a href="https://github.com/rolandkeszi/social-network-analysis">Kód</a>Python · NetworkX · Gephi · VOSviewer</div>
+      </div>
+    </div>
+
+    <div class="project">
+      <a class="thumb" href="../projects/sift.html"><img src="../assets/img/sift_thumb.jpg" alt="SIFT matches between two photos of a house" style="object-fit:cover;padding:0"></a>
+      <div>
+        <h3><a href="../projects/sift.html">Egyező pontok keresése fényképek között SIFT-tel</a></h3>
+        <p>Kulcspontok detektálása és párosítása két épületről, különböző szögből és fényképezőgéppel készült saját fotóimon. A mintázatos családi háznál több mint ezer megbízható egyezés adódik, a panelház ismétlődő homlokzatán jóval kevesebb.</p>
+        <div class="meta"><a href="../projects/sift.html">Esettanulmány</a><a href="https://github.com/rolandkeszi/sift-feature-matching">Kód</a>Python · OpenCV</div>
+      </div>
+    </div>
+
+    <div class="project">
+      <a class="thumb" href="../projects/llm-benchmark.html"><img src="../assets/img/llm_benchmark.png" alt="Accuracy of twelve sentiment models"></a>
+      <div>
+        <h3><a href="../projects/llm-benchmark.html">A szótáraktól a nagy nyelvi modellekig: szentiment-benchmark</a></h3>
+        <p>Tizenkét megközelítés osztályozza ugyanazokat az IMDb-filmkritikákat: szótáralapú módszerek, neurális hálók, finomhangolt BERT, valamint tanítás nélküli (zero-shot) GPT-, Claude- és Gemini-modellek. A legjobb nyelvi modell tanítóadat nélkül 96,9%-os pontosságot ér el.</p>
+        <div class="meta"><a href="../projects/llm-benchmark.html">Esettanulmány</a><a href="https://github.com/rolandkeszi/llm-sentiment-benchmark">Kód</a>Python · Transformers · LLM APIs</div>
+      </div>
+    </div>
+
+    <div class="project">
+      <a class="thumb" href="../projects/sentiment-neural-networks.html"><img src="../assets/img/nlp_covid_confusion.png" alt="Confusion matrix of an LSTM classifying COVID-19 tweets"></a>
+      <div>
+        <h3><a href="../projects/sentiment-neural-networks.html">Szentimentelemzés háromféleképpen: neurális hálók és szótár</a></h3>
+        <p>Egy kis, szóbeágyazásos (word embedding) neurális háló 85%-os pontossággal sorolja pozitív vagy negatív kategóriába az IMDb-filmkritikákat. Az öt hangulati fokozattal címkézett COVID-19-tweeteken a szavakat sorrendben feldolgozó LSTM jobb, mint az egyszerűbb sűrű háló (68,5% vs 65,1%). A tanítást nem igénylő VADER-szótár a légitársasági tweeteknek csak 54%-ánál egyezik az emberi címkékkel.</p>
+        <div class="meta"><a href="../projects/sentiment-neural-networks.html">Esettanulmány</a><a href="https://github.com/rolandkeszi/nlp-sentiment-studies">Kód</a>Python · TensorFlow · NLTK · spaCy</div>
+      </div>
+    </div>
+
+    <div class="project">
+      <a class="thumb svg" href="../projects/airline-tweets.html"><img src="../assets/img/sentiment-by-airline.svg" alt="Tweet sentiment by US airline"></a>
+      <div>
+        <h3><a href="../projects/airline-tweets.html">Amerikai légitársasági tweetek: hangulat-dashboard és szótárértékelés</a></h3>
+        <p>Kétnyelvű Streamlit-dashboard hat amerikai légitársaságról szóló 14 640 címkézett tweetről, valamint a VADER szentimentszótár értékelése az emberi címkékhez mérve: 54%-os pontosság, a panaszok fele rejtve marad.</p>
+        <div class="meta"><a href="../projects/airline-tweets.html">Esettanulmány</a><a href="https://rolandkeszi-sentiment-usair.streamlit.app/">Élő demó</a><a href="https://github.com/rolandkeszi/USAir">Kód</a>Python · Streamlit · NLTK</div>
+      </div>
+    </div>
+
+    <div class="project">
+      <a class="thumb svg" href="../projects/labour-market.html"><img src="../assets/img/covid-labour-market.svg" alt="US labour market indicators 2015 to 2026"></a>
+      <div>
+        <h3><a href="../projects/labour-market.html">A COVID-19 sokk az amerikai munkaerőpiacon</a></h3>
+        <p>R-alapú adatfeldolgozó folyamat, amely a Bureau of Labor Statistics API-jából tölti le a hivatalos statisztikákat, és ábrákon mutatja be, milyen mély volt a sokk és mennyi ideig tartott a kilábalás.</p>
+        <div class="meta"><a href="../projects/labour-market.html">Esettanulmány</a><a href="https://github.com/rolandkeszi/bls-covid-labour-market">Kód</a>R · REST API · ggplot2</div>
+      </div>
+    </div>
+
+    <footer>© 2026 Keszi Roland</footer>
+  </div>
+</body>
+</html>

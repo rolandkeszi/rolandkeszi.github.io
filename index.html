@@ -8,6 +8,8 @@
   <meta property="og:title" content="Roland Keszi · Data Science Portfolio">
   <meta property="og:description" content="Data science and AI projects with methods, results and code.">
   <meta property="og:image" content="https://rolandkeszi.github.io/assets/img/pp_model_comparison.png">
+  <link rel="alternate" hreflang="en" href="https://rolandkeszi.github.io/">
+  <link rel="alternate" hreflang="hu" href="https://rolandkeszi.github.io/hu/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -17,7 +19,7 @@
   <div class="wrap">
     <header class="top">
       <a class="name" href="./">Roland Keszi</a>
-      <nav><a href="#projects">Projects</a><a href="https://github.com/rolandkeszi">GitHub</a><a href="https://www.linkedin.com/in/rolandkeszi/">LinkedIn</a></nav>
+      <nav><a href="#projects">Projects</a><a href="https://github.com/rolandkeszi">GitHub</a><a href="https://www.linkedin.com/in/rolandkeszi/">LinkedIn</a><span class="lang"><a class="active" aria-current="true" href="./" hreflang="en" lang="en" title="English"><svg viewBox="0 0 60 30" aria-hidden="true"><clipPath id="uk-t"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath><path d="M0,0 v30 h60 v-30 z" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#uk-t)" stroke="#C8102E" stroke-width="4"/><path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/><path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/></svg><span class="sr">English</span></a><a href="hu/" hreflang="hu" lang="hu" title="Magyar"><svg viewBox="0 0 6 3" aria-hidden="true"><rect width="6" height="1" fill="#CE2939"/><rect y="1" width="6" height="1" fill="#fff"/><rect y="2" width="6" height="1" fill="#477050"/></svg><span class="sr">Magyar</span></a></span></nav>
     </header>
 
     <section class="intro">
@@ -73,6 +75,15 @@
         <h3><a href="projects/llm-benchmark.html">From lexicons to large language models: a sentiment benchmark</a></h3>
         <p>Twelve approaches classify the same IMDb reviews: lexicon methods, neural networks, a fine-tuned BERT and zero-shot GPT, Claude and Gemini models. The best LLM reaches 96.9% accuracy without any training data.</p>
         <div class="meta"><a href="projects/llm-benchmark.html">Case study</a><a href="https://github.com/rolandkeszi/llm-sentiment-benchmark">Code</a>Python · Transformers · LLM APIs</div>
+      </div>
+    </div>
+
+    <div class="project">
+      <a class="thumb" href="projects/sentiment-neural-networks.html"><img src="assets/img/nlp_covid_confusion.png" alt="Confusion matrix of an LSTM classifying COVID-19 tweets"></a>
+      <div>
+        <h3><a href="projects/sentiment-neural-networks.html">Sentiment analysis three ways: neural networks and a lexicon</a></h3>
+        <p>A small neural network with word embeddings classifies IMDb movie reviews as positive or negative with 85% accuracy. On COVID-19 tweets with five sentiment levels, an LSTM that reads words in order beats a simpler dense network (68.5% vs 65.1%). The VADER sentiment lexicon, which needs no training, agrees with human labels on only 54% of airline tweets.</p>
+        <div class="meta"><a href="projects/sentiment-neural-networks.html">Case study</a><a href="https://github.com/rolandkeszi/nlp-sentiment-studies">Code</a>Python · TensorFlow · NLTK · spaCy</div>
       </div>
     </div>
 
