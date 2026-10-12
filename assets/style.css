@@ -42,6 +42,8 @@ a:hover { text-decoration: underline; }
 .top nav { display: flex; align-items: center; }
 .top nav a { color: var(--muted); margin-left: 22px; }
 .top nav a:hover { color: var(--text); text-decoration: none; }
+.top nav a.icon { display: inline-flex; }
+.top nav a.icon svg { width: 20px; height: 20px; }
 .lang { display: inline-flex; align-items: center; gap: 8px; margin-left: 22px; }
 .top nav .lang a { margin-left: 0; display: inline-flex; opacity: .45; transition: opacity .15s; }
 .top nav .lang a:hover, .top nav .lang a.active { opacity: 1; }
