@@ -58,7 +58,7 @@ a:hover { text-decoration: underline; }
 .lang-note { font-size: 14px; color: var(--muted); margin: 0; }
 
 .intro { padding: 72px 0 56px; border-bottom: 1px solid var(--line); }
-.top nav a.head-avatar { margin-left: 20px; display: inline-flex; }
+.top nav .head-avatar { margin-left: 20px; display: inline-flex; }
 .head-avatar img { width: 92px; height: 92px; border-radius: 50%; object-fit: cover; border: 1px solid var(--line); }
 .intro h1 { font-size: 44px; line-height: 1.1; letter-spacing: -.025em; font-weight: 700; margin: 0 0 8px; }
 .intro .role { font-size: 20px; color: var(--muted); margin: 0 0 28px; }
@@ -133,7 +133,7 @@ tr.chosen td { color: var(--text); font-weight: 600; }
   .about-btn { margin-left: 0; }
   .about-pop { top: 84px; }
   .top .name { font-size: 16px; }
-  .top nav a.head-avatar { margin-left: 12px; }
+  .top nav .head-avatar { margin-left: 12px; }
   .head-avatar img { width: 64px; height: 64px; }
   .top nav a { margin-left: 12px; }
   .lang { margin-left: 12px; gap: 6px; }
@@ -142,8 +142,16 @@ tr.chosen td { color: var(--text); font-weight: 600; }
 @media (max-width: 420px) {
   .top nav a[href$="#projects"] { display: none; }
   .top .name { font-size: 15px; margin-right: 10px; }
-  .top nav a, .lang, .top nav a.head-avatar { margin-left: 9px; }
+  .top nav a, .lang, .top nav .head-avatar, .about-btn { margin-left: 9px; }
   .top nav a.icon svg { width: 19px; height: 19px; }
   .lang svg { width: 18px; height: 12px; }
   .head-avatar img { width: 58px; height: 58px; }
 }
+
+/* header photo: click to enlarge */
+.head-avatar { background: none; border: 0; padding: 0; cursor: zoom-in; border-radius: 50%; }
+.head-avatar:focus-visible { outline: 2px solid var(--link); outline-offset: 3px; }
+.photo-pop { margin: auto; padding: 0; border: 0; background: transparent; overflow: visible; }
+.photo-pop::backdrop { background: rgba(0, 0, 0, .55); }
+.photo-pop button { display: block; padding: 0; border: 0; background: none; cursor: zoom-out; border-radius: 50%; }
+.photo-pop img { display: block; width: min(360px, 80vw); height: min(360px, 80vw); border-radius: 50%; object-fit: cover; border: 4px solid #fff; box-shadow: 0 20px 60px rgba(0, 0, 0, .35); }
