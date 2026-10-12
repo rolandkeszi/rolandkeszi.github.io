@@ -43,6 +43,7 @@ a:hover { text-decoration: underline; }
 .top nav a:hover { color: var(--text); text-decoration: none; }
 
 .intro { padding: 72px 0 56px; border-bottom: 1px solid var(--line); }
+.intro .avatar { float: right; width: 128px; height: 128px; border-radius: 50%; object-fit: cover; margin: 0 0 16px 24px; border: 1px solid var(--line); }
 .intro h1 { font-size: 44px; line-height: 1.1; letter-spacing: -.025em; font-weight: 700; margin: 0 0 8px; }
 .intro .role { font-size: 20px; color: var(--muted); margin: 0 0 28px; }
 .intro p { color: var(--text-2); margin: 0 0 14px; max-width: 640px; }
@@ -94,6 +95,7 @@ tr.chosen td { color: var(--text); font-weight: 600; }
   .wrap { padding: 0 16px; }
   .intro { padding: 40px 0 40px; }
   .intro h1 { font-size: 34px; }
+  .intro .avatar { width: 84px; height: 84px; margin-left: 16px; }
   .project { grid-template-columns: minmax(0, 1fr); gap: 16px; }
   .project .thumb { aspect-ratio: 16 / 9; }
   .case-head h1 { font-size: 30px; }
