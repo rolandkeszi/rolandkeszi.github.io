@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Airline Tweet Sentiment · Roland Keszi</title>
+  <meta name="description" content="Case study: an interactive Streamlit dashboard of 14,640 airline tweets and an evaluation of the VADER sentiment lexicon against human labels.">
+  <meta property="og:title" content="US airline tweets: sentiment dashboard and lexicon evaluation">
+  <meta property="og:description" content="63% of tweets are negative; VADER reaches only 54% accuracy against human labels.">
+  <meta property="og:image" content="https://rolandkeszi.github.io/assets/img/usair_vader_confusion.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="top">
+      <a class="name" href="../">Roland Keszi</a>
+      <nav><a href="../#projects">Projects</a><a href="https://github.com/rolandkeszi">GitHub</a><a href="https://www.linkedin.com/in/rolandkeszi/">LinkedIn</a></nav>
+    </header>
+
+    <a class="back" href="../#projects">← All projects</a>
+
+    <section class="case-head">
+      <h1>US airline tweets: sentiment dashboard and lexicon evaluation</h1>
+      <p class="lede">How do passengers talk about airlines on social media, and how well can a dictionary-based tool read their mood? An interactive dashboard and an evaluation of the VADER sentiment lexicon against human labels.</p>
+      <dl class="facts">
+        <div><dt>Data</dt><dd>14,640 labelled tweets about six US airlines, February 2015</dd></div>
+        <div><dt>Methods</dt><dd>Exploratory analysis, VADER sentiment scoring, confusion-matrix evaluation</dd></div>
+        <div><dt>Tools</dt><dd>Python, Streamlit, Plotly, NLTK</dd></div>
+      </dl>
+    </section>
+
+    <article>
+      <h2>The data</h2>
+      <p>The <a href="https://www.kaggle.com/datasets/crowdflower/twitter-airline-sentiment">Twitter US Airline Sentiment</a> dataset contains 14,640 tweets about six US airlines. Human annotators labelled each tweet as positive, neutral or negative and tagged the reason for each complaint.</p>
+
+      <h2>An interactive dashboard</h2>
+      <p>I built a <strong>Streamlit dashboard</strong> for exploring the data. It works in English and Hungarian, and its filters for airline, sentiment and hour of day apply to every view. It covers the sentiment split per airline, a complaint profile, time patterns, word clouds and a downloadable data table.</p>
+      <figure>
+        <img src="../assets/img/sentiment-by-airline.svg" alt="Sentiment split of tweets by airline">
+        <figcaption>63% of all tweets are negative. US Airways, American and United draw the most criticism, and customer service is the most common complaint.</figcaption>
+      </figure>
+      <p><a href="https://rolandkeszi-sentiment-usair.streamlit.app/?lang=en">→ Open the live dashboard</a> <span class="meta">(it may take about 30 seconds to wake up)</span></p>
+
+      <h2>Can a lexicon read passengers' mood?</h2>
+      <p><strong>VADER</strong> (Valence Aware Dictionary and sEntiment Reasoner, part of NLTK) was designed for social media text. It handles slang, emoticons, capital letters and punctuation, and it accounts for intensifiers ("very good") and dampeners ("slightly bad"). It needs no training. I compared its predictions with the human labels on all 14,640 tweets.</p>
+      <figure>
+        <img src="../assets/img/usair_vader_confusion.png" alt="Confusion matrix of VADER predictions against human labels" style="max-width:520px;margin:0 auto">
+        <figcaption>VADER reaches an accuracy of 54%. When it says "negative" it is almost always right (precision 0.90), but it catches only half of the negative tweets (recall 0.50).</figcaption>
+      </figure>
+      <figure>
+        <img src="../assets/img/usair_vader_distribution.png" alt="Predicted versus actual number of tweets per sentiment">
+        <figcaption>VADER labels 6,112 tweets positive, but only 2,363 are. 2,710 of the negative tweets are scored as positive.</figcaption>
+      </figure>
+
+      <h2>Conclusions</h2>
+      <p>Social media complaints are dominated by <strong>service issues</strong>, and an interactive dashboard makes the patterns easy to explore by airline and time of day. A dictionary-based tool like VADER is fast and needs no training, but on real customer complaints it <strong>misses half of the negative messages and over-predicts positive ones</strong>, because a word list cannot read context such as sarcasm or polite phrasing in an angry message. This is the gap that the <a href="llm-benchmark.html">LLM benchmark</a> shows modern language models closing.</p>
+
+      <p style="margin-top:32px"><a href="https://github.com/rolandkeszi/USAir">→ Code on GitHub</a></p>
+      <p class="meta" style="margin-top:24px">Data: Twitter US Airline Sentiment (Crowdflower / Kaggle). Reference: Hutto, C. J., &amp; Gilbert, E. (2014). VADER: a parsimonious rule-based model for sentiment analysis of social media text. <i>ICWSM</i>.</p>
+    </article>
+
+    <footer>© 2026 Roland Keszi · <a href="../">Portfolio</a></footer>
+  </div>
+</body>
+</html>

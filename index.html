@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Roland Keszi · Data Science Portfolio</title>
+  <meta name="description" content="Data science and AI projects by Roland Keszi: regression modelling, LLM evaluation, NLP and data visualisation, each with methods, results and code.">
+  <meta property="og:title" content="Roland Keszi · Data Science Portfolio">
+  <meta property="og:description" content="Data science and AI projects with methods, results and code.">
+  <meta property="og:image" content="https://rolandkeszi.github.io/assets/img/pp_model_comparison.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="top">
+      <a class="name" href="./">Roland Keszi</a>
+      <nav><a href="#projects">Projects</a><a href="https://github.com/rolandkeszi">GitHub</a><a href="https://www.linkedin.com/in/rolandkeszi/">LinkedIn</a></nav>
+    </header>
+
+    <section class="intro">
+      <h1>Roland Keszi</h1>
+      <p class="role">Data science &amp; AI</p>
+      <p>I build and evaluate predictive models, from classical regression to large language models, and I care as much about explaining a result as about the result itself.</p>
+      <p>Each project below documents the question, the data, the method and the conclusions, with the full code on GitHub.</p>
+      <div class="links"><a href="https://github.com/rolandkeszi">GitHub</a><a href="https://www.linkedin.com/in/rolandkeszi/">LinkedIn</a></div>
+    </section>
+
+    <h2 class="section" id="projects">Projects</h2>
+
+    <div class="project">
+      <a class="thumb" href="projects/power-plant.html"><img src="assets/img/pp_thumb.png" alt="Scatter plot: plant output falls as ambient temperature rises"></a>
+      <div>
+        <h3><a href="projects/power-plant.html">Estimating power plant output with regression models</a></h3>
+        <p>How much electricity does a combined cycle power plant deliver under given weather conditions? Starting from exploratory analysis, I compared linear, polynomial, lasso, ridge and neural network models. I chose an interpretable linear model (R² = 0.93) and validated it with cross-validation and on an independent sample.</p>
+        <div class="meta"><a href="projects/power-plant.html">Case study</a><a href="https://github.com/rolandkeszi/power-plant-output-prediction">Code</a>Python · scikit-learn · SPSS</div>
+      </div>
+    </div>
+
+    <div class="project">
+      <a class="thumb" href="projects/process-mining.html"><img src="assets/img/pm_heuristic_net.png" alt="Heuristic net of patient pathways"></a>
+      <div>
+        <h3><a href="projects/process-mining.html">Patient pathways and hospital resources: process mining</a></h3>
+        <p>From a hospital event log of 100 patients I reconstruct the care pathway, the time between steps and the staff workload. The tools are directly-follows graphs, Petri nets, BPMN and a heuristic net, and I compare the alpha, inductive and heuristic miners on fitness, precision, generalization and simplicity.</p>
+        <div class="meta"><a href="projects/process-mining.html">Case study</a><a href="https://github.com/rolandkeszi/hospital-process-mining">Code</a>Python · PM4Py · Graphviz</div>
+      </div>
+    </div>
+
+    <div class="project">
+      <a class="thumb" href="projects/network-analysis.html"><img src="assets/img/sna_01_network_hubs.png" alt="Facebook friendship network with hubs highlighted"></a>
+      <div>
+        <h3><a href="projects/network-analysis.html">Network structures in research literature, social media and text</a></h3>
+        <p>A map of the sentiment analysis literature built from OpenAlex data, a scale-free Facebook friendship network of 4,039 users with three dominant hubs, and topical clusters in a similarity network of political tweets.</p>
+        <div class="meta"><a href="projects/network-analysis.html">Case study</a><a href="https://github.com/rolandkeszi/social-network-analysis">Code</a>Python · NetworkX · Gephi · VOSviewer</div>
+      </div>
+    </div>
+
+    <div class="project">
+      <a class="thumb" href="projects/sift.html"><img src="assets/img/sift_thumb.jpg" alt="SIFT matches between two photos of a house" style="object-fit:cover;padding:0"></a>
+      <div>
+        <h3><a href="projects/sift.html">Finding matching points between photos with SIFT</a></h3>
+        <p>Keypoint detection and matching on my own photos of two buildings taken from different angles and cameras. The textured house gives more than a thousand reliable matches; the repetitive facade of a block of flats gives far fewer.</p>
+        <div class="meta"><a href="projects/sift.html">Case study</a><a href="https://github.com/rolandkeszi/sift-feature-matching">Code</a>Python · OpenCV</div>
+      </div>
+    </div>
+
+    <div class="project">
+      <a class="thumb" href="projects/llm-benchmark.html"><img src="assets/img/llm_benchmark.png" alt="Accuracy of twelve sentiment models"></a>
+      <div>
+        <h3><a href="projects/llm-benchmark.html">From lexicons to large language models: a sentiment benchmark</a></h3>
+        <p>Twelve approaches classify the same IMDb reviews: lexicon methods, neural networks, a fine-tuned BERT and zero-shot GPT, Claude and Gemini models. The best LLM reaches 96.9% accuracy without any training data.</p>
+        <div class="meta"><a href="projects/llm-benchmark.html">Case study</a><a href="https://github.com/rolandkeszi/llm-sentiment-benchmark">Code</a>Python · Transformers · LLM APIs</div>
+      </div>
+    </div>
+
+    <div class="project">
+      <a class="thumb svg" href="projects/airline-tweets.html"><img src="assets/img/sentiment-by-airline.svg" alt="Tweet sentiment by US airline"></a>
+      <div>
+        <h3><a href="projects/airline-tweets.html">US airline tweets: sentiment dashboard and lexicon evaluation</a></h3>
+        <p>A bilingual Streamlit dashboard of 14,640 labelled tweets about six US airlines, and an evaluation of the VADER sentiment lexicon against human labels: 54% accuracy, with half of the complaints missed.</p>
+        <div class="meta"><a href="projects/airline-tweets.html">Case study</a><a href="https://rolandkeszi-sentiment-usair.streamlit.app/?lang=en">Live demo</a><a href="https://github.com/rolandkeszi/USAir">Code</a>Python · Streamlit · NLTK</div>
+      </div>
+    </div>
+
+    <div class="project">
+      <a class="thumb svg" href="projects/labour-market.html"><img src="assets/img/covid-labour-market.svg" alt="US labour market indicators 2015 to 2026"></a>
+      <div>
+        <h3><a href="projects/labour-market.html">The COVID-19 shock in the US labour market</a></h3>
+        <p>An R pipeline that retrieves official statistics from the Bureau of Labor Statistics API and charts how deep the shock went and how long the recovery took.</p>
+        <div class="meta"><a href="projects/labour-market.html">Case study</a><a href="https://github.com/rolandkeszi/bls-covid-labour-market">Code</a>R · REST API · ggplot2</div>
+      </div>
+    </div>
+
+    <footer>© 2026 Roland Keszi</footer>
+  </div>
+</body>
+</html>

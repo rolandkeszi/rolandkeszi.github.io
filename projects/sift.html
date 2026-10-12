@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SIFT Feature Matching · Roland Keszi</title>
+  <meta name="description" content="Case study: detecting and matching keypoints between photos of buildings with SIFT, brute-force and FLANN matching.">
+  <meta property="og:title" content="Finding matching points between photos with SIFT">
+  <meta property="og:description" content="More than a thousand reliable matches on a textured house, far fewer on a repetitive facade.">
+  <meta property="og:image" content="https://rolandkeszi.github.io/assets/img/sift_house_matches.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="top">
+      <a class="name" href="../">Roland Keszi</a>
+      <nav><a href="../#projects">Projects</a><a href="https://github.com/rolandkeszi">GitHub</a><a href="https://www.linkedin.com/in/rolandkeszi/">LinkedIn</a></nav>
+    </header>
+
+    <a class="back" href="../#projects">← All projects</a>
+
+    <section class="case-head">
+      <h1>Finding matching points between photos with SIFT</h1>
+      <p class="lede">I photographed two buildings from different angles and distances with two different cameras, then used the SIFT algorithm to find the same points across the photos.</p>
+      <dl class="facts">
+        <div><dt>Data</dt><dd>My own photos of a house and a block of flats</dd></div>
+        <div><dt>Methods</dt><dd>SIFT keypoints and descriptors, brute-force and FLANN matching, Lowe's ratio test</dd></div>
+        <div><dt>Tools</dt><dd>Python, OpenCV</dd></div>
+      </dl>
+    </section>
+
+    <article>
+      <h2>The task</h2>
+      <p>Recognising the same object in two different photos is a basic problem in computer vision. It underlies panorama stitching, 3D reconstruction and object recognition. <strong>SIFT</strong> (Scale-Invariant Feature Transform, Lowe) finds distinctive points that stay recognisable under changes of scale, rotation and viewpoint.</p>
+      <p>I took photos of two buildings: the <strong>side wall of a house</strong>, which also shows tree branches around it, and the <strong>facade of a block of flats</strong>, which shows only the building, the garage doors and a concrete strip in front. Two different phone cameras and several angles and distances made the task realistic.</p>
+
+      <h2>How it works</h2>
+      <p>SIFT detects keypoints on both images and describes each one with a <strong>128-dimensional descriptor</strong>. For every descriptor in the first image, the matcher finds the two nearest descriptors in the second (k = 2). I used two matchers: a <strong>brute-force matcher</strong>, and <strong>FLANN</strong>, a fast approximate nearest-neighbour search on KD-trees.</p>
+      <p>Not every nearest neighbour is a true match. <strong>Lowe's ratio test</strong> keeps a match only if the nearest neighbour is clearly closer than the second nearest, for example below 68% of its distance. The lower the ratio, the stricter the filter.</p>
+      <figure>
+        <img src="../assets/img/sift_keypoints.jpg" alt="SIFT keypoints concentrated on textured areas of the house photo">
+        <figcaption>12,468 keypoints on one photo of the house. They concentrate on texture (the stone base, the branches and the edges) and are sparse on the plain wall.</figcaption>
+      </figure>
+
+      <h2>Results</h2>
+      <figure>
+        <img src="../assets/img/sift_house_matches.jpg" alt="Matches between two photos of the house">
+        <figcaption>The house pair gives about 1,250 good matches, of which 120 are shown. SIFT also matches the surrounding tree branches, not only the building.</figcaption>
+      </figure>
+      <figure>
+        <img src="../assets/img/sift_panel_matches.jpg" alt="Matches between two photos of the block of flats">
+        <figcaption>The block of flats gives only about 70 good matches. Its repetitive windows look alike, and some matches are visibly false, for example between the wall and the concrete strip in front of the garages.</figcaption>
+      </figure>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Image pair</th><th class="num">Original analysis</th><th class="num">Re-run (FLANN)</th></tr></thead>
+          <tbody>
+            <tr><td>House 1 – 2</td><td class="num">1,256</td><td class="num">1,249</td></tr>
+            <tr><td>Flats 1 – 2</td><td class="num">67</td><td class="num">69</td></tr>
+            <tr><td>Flats 1 – 3</td><td class="num">30</td><td class="num">26</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Re-running the analysis reproduces the original counts closely. The small differences come from FLANN's approximate search and the OpenCV version.</p>
+
+      <h2>Conclusions</h2>
+      <p><strong>Texture-rich scenes match well</strong>, with more than a thousand reliable matches on the house. <strong>Repetitive structures are hard</strong>: identical windows leave far fewer distinctive matches and produce some false ones. The ratio threshold trades the number of matches for their reliability, and FLANN gives practically the same result as brute-force matching at a fraction of the cost.</p>
+      <p class="note"><strong>Privacy.</strong> The photos are my own. All metadata, including location data, was removed before publishing.</p>
+
+      <p style="margin-top:32px"><a href="https://github.com/rolandkeszi/sift-feature-matching">→ Code, images and executed notebook on GitHub</a></p>
+      <p class="meta" style="margin-top:24px">Reference: Lowe, D. G. (2004). Distinctive image features from scale-invariant keypoints. <i>International Journal of Computer Vision</i>, 60(2), 91–110.</p>
+    </article>
+
+    <footer>© 2026 Roland Keszi · <a href="../">Portfolio</a></footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>COVID-19 Labour Market Shock · Roland Keszi</title>
+  <meta name="description" content="Case study: an R pipeline on the Bureau of Labor Statistics API that measures how deep the COVID-19 shock in the US labour market went and how long the recovery took.">
+  <meta property="og:title" content="The COVID-19 shock in the US labour market">
+  <meta property="og:description" content="21.9 million jobs lost in two months; 28 months to recover the pre-pandemic payroll level.">
+  <meta property="og:image" content="https://rolandkeszi.github.io/assets/img/covid-labour-market.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="top">
+      <a class="name" href="../">Roland Keszi</a>
+      <nav><a href="../#projects">Projects</a><a href="https://github.com/rolandkeszi">GitHub</a><a href="https://www.linkedin.com/in/rolandkeszi/">LinkedIn</a></nav>
+    </header>
+
+    <a class="back" href="../#projects">← All projects</a>
+
+    <section class="case-head">
+      <h1>The COVID-19 shock in the US labour market</h1>
+      <p class="lede">An automated R pipeline retrieves official labour statistics from the US Bureau of Labor Statistics, then measures how deep the pandemic shock went and how long the recovery took.</p>
+      <dl class="facts">
+        <div><dt>Data</dt><dd>BLS Public Data API, monthly series, Jan 2015 – Sep 2026</dd></div>
+        <div><dt>Methods</dt><dd>REST API retrieval, tidy time series, recovery analysis</dd></div>
+        <div><dt>Tools</dt><dd>R (httr, dplyr, ggplot2)</dd></div>
+      </dl>
+    </section>
+
+    <article>
+      <h2>The question</h2>
+      <p>The pandemic hit the US labour market faster than any previous recession. How many jobs disappeared, how high did unemployment climb, and <strong>how long did it take to get back</strong> to where things stood in February 2020?</p>
+
+      <h2>Approach</h2>
+      <p>An R script calls the <strong>BLS Public Data API</strong> and requests three monthly, seasonally adjusted series:</p>
+      <ul>
+        <li><strong>Unemployment rate</strong> (<code>LNS14000000</code>), from the household survey;</li>
+        <li><strong>Employment–population ratio</strong> (<code>LNS12300000</code>), from the household survey;</li>
+        <li><strong>Total nonfarm payrolls</strong> (<code>CES0000000001</code>), from the establishment survey.</li>
+      </ul>
+      <p>The API caps the span of a single request, so the script splits the period into 10-year windows. It uses the higher-limit v2 API when a key is present and falls back to v1 without one. The key is read from an environment variable, never from the code. The tidy result is written to a CSV, so every figure can be checked without calling the API again.</p>
+
+      <h2>Results</h2>
+      <figure>
+        <img src="../assets/img/covid-labour-market.svg" alt="Unemployment rate, employment-population ratio and nonfarm payrolls, 2015 to 2026">
+        <figcaption>All three indicators collapse in spring 2020. The shaded band marks the NBER recession, February–April 2020.</figcaption>
+      </figure>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Indicator</th><th class="num">Feb 2020</th><th class="num">Apr 2020</th><th class="num">Change</th><th>Back to pre-COVID level</th></tr></thead>
+          <tbody>
+            <tr><td>Unemployment rate</td><td class="num">3.5%</td><td class="num">14.8%</td><td class="num">+11.3 pp</td><td>May 2022</td></tr>
+            <tr><td>Employment–population ratio</td><td class="num">61.1%</td><td class="num">51.2%</td><td class="num">−9.9 pp</td><td>Not fully (59.2% in Sep 2026)</td></tr>
+            <tr class="chosen"><td>Nonfarm payrolls</td><td class="num">152.3 M</td><td class="num">130.4 M</td><td class="num">−21.9 M jobs</td><td>June 2022, after 28 months</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Conclusions</h2>
+      <ul>
+        <li><strong>The fastest collapse in the series' history:</strong> roughly one in seven US jobs disappeared within two months.</li>
+        <li><strong>Jobs came back faster than people:</strong> payrolls recovered by mid-2022, but the share of the population in work never returned to its 2019 peak.</li>
+        <li><strong>Data quality is part of the story:</strong> the household survey was not conducted in October 2025 because of the federal shutdown, and the pipeline keeps that gap rather than interpolating a value.</li>
+      </ul>
+
+      <p style="margin-top:32px"><a href="https://github.com/rolandkeszi/bls-covid-labour-market">→ R code and data on GitHub</a></p>
+      <p class="meta" style="margin-top:24px">Data: US Bureau of Labor Statistics, Public Data API. Recession dates: NBER.</p>
+    </article>
+
+    <footer>© 2026 Roland Keszi · <a href="../">Portfolio</a></footer>
+  </div>
+</body>
+</html>

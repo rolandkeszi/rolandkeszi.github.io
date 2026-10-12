@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Patient Pathways · Roland Keszi</title>
+  <meta name="description" content="Case study: reconstructing patient pathways and staff workload from a hospital event log with process mining (PM4Py).">
+  <meta property="og:title" content="Patient pathways and hospital resources: a process mining case study">
+  <meta property="og:description" content="DFGs, Petri nets, BPMN and heuristic nets reconstruct how 100 patients move through care.">
+  <meta property="og:image" content="https://rolandkeszi.github.io/assets/img/pm_heuristic_net.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="top">
+      <a class="name" href="../">Roland Keszi</a>
+      <nav><a href="../#projects">Projects</a><a href="https://github.com/rolandkeszi">GitHub</a><a href="https://www.linkedin.com/in/rolandkeszi/">LinkedIn</a></nav>
+    </header>
+
+    <a class="back" href="../#projects">← All projects</a>
+
+    <section class="case-head">
+      <h1>Patient pathways and hospital resources</h1>
+      <p class="lede">A process mining case study. From a hospital event log I reconstruct how patients move through care, how long each step takes and how heavily the staff are loaded, and I compare process discovery algorithms.</p>
+      <dl class="facts">
+        <div><dt>Data</dt><dd>Event log of 100 patients, 690 events, 13 resources</dd></div>
+        <div><dt>Methods</dt><dd>Dotted chart, DFG, Petri net, process tree, BPMN, heuristic net, conformance checking</dd></div>
+        <div><dt>Tools</dt><dd>Python, PM4Py, pandas, Graphviz</dd></div>
+      </dl>
+    </section>
+
+    <article>
+      <h2>The goal</h2>
+      <p>Hospital information systems record every consultation, test and treatment as an event. Process mining turns these logs into a picture of <strong>how care actually happens</strong>: which paths patients take, where time is lost and how work is spread across the staff.</p>
+      <p>The event log has four fields per event: the patient, the activity (for example blood test, X-ray/MRI or surgery), the responsible resource (a doctor, nurse, lab or team) and the timestamp. The log is artificial and was created for teaching, so the results illustrate the method rather than a real hospital.</p>
+
+      <h2>Exploring the event log</h2>
+      <p>Every patient went through the <strong>full pathway, from the first consult to the final consult</strong>. Blood tests and physical examinations were done for everyone, while surgery, imaging and medication were not.</p>
+      <figure>
+        <img src="../assets/img/pm_activity_coverage.png" alt="Number of patients per activity">
+      </figure>
+      <p>The <strong>dotted chart</strong> places every event on a timeline, one row per patient. It shows a steady flow of cases, and it shows that blood tests and physical examinations happen early in the stay with little variation. Early morning and late afternoon are the quietest hours.</p>
+      <figure>
+        <img src="../assets/img/pm_dotted_chart.png" alt="Dotted chart of all patient pathways over time">
+        <figcaption>Each row is one patient, sorted by length of stay. The final consult (purple) marks the end of each pathway.</figcaption>
+      </figure>
+      <figure>
+        <img src="../assets/img/pm_resource_workload.png" alt="Number of events handled by each member of staff">
+        <figcaption>Staff workload is uneven: one doctor handles 158 events, while several others handle fewer than ten.</figcaption>
+      </figure>
+
+      <h2>Discovering the process</h2>
+      <p>The <strong>heuristic net</strong> shows how often each activity occurs and how often one follows another. Every pathway starts with the first consult. Patients then go through blood tests, physical examinations and, for 90 of them, an X-ray/MRI. After the second consult the path splits: <strong>80 patients receive medication and 20 undergo surgery</strong>. Everyone finishes with the final consult.</p>
+      <figure>
+        <img src="../assets/img/pm_heuristic_net.png" alt="Heuristic net with activity and transition frequencies" style="max-width:420px;margin:0 auto">
+      </figure>
+      <p>The <strong>BPMN model</strong>, derived from the inductive miner's process tree, makes the logic explicit. The examinations after the first consult run in <strong>parallel</strong>, and the step after the second consult is an <strong>exclusive choice</strong> between medication and surgery.</p>
+      <figure>
+        <img src="../assets/img/pm_bpmn.png" alt="BPMN model of the patient pathway">
+      </figure>
+
+      <h2>Where time is spent</h2>
+      <p>The time-based directly-follows graph shows the average time between steps. These are the points where the care pathway could be shortened.</p>
+      <figure>
+        <img src="../assets/img/pm_dfg_performance.png" alt="Performance DFG with average times between activities">
+      </figure>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Transition</th><th class="num">Average time</th></tr></thead>
+          <tbody>
+            <tr><td>First consult → X-ray/MRI</td><td class="num">3 days</td></tr>
+            <tr><td>Second consult → surgery</td><td class="num">3 days</td></tr>
+            <tr><td>Blood test → second consult</td><td class="num">2 days</td></tr>
+            <tr><td>Medication or surgery → final consult</td><td class="num">2 days</td></tr>
+            <tr><td>First consult → physical test</td><td class="num">1 day</td></tr>
+            <tr><td>Second consult → medication</td><td class="num">9 hours</td></tr>
+            <tr><td>Physical test → X-ray/MRI</td><td class="num">6 hours</td></tr>
+            <tr><td>Physical test → blood test</td><td class="num">1 hour</td></tr>
+            <tr><td>X-ray/MRI → blood test</td><td class="num">43 minutes</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Waiting for imaging and for surgery, at about three days each, are the longest gaps in the pathway.</p>
+
+      <h2>Comparing discovery algorithms</h2>
+      <p>Different miners build different models from the same log. I compared them on the four standard quality dimensions.</p>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Miner</th><th class="num">Fitness</th><th class="num">Precision</th><th class="num">Generalization</th><th class="num">Simplicity</th></tr></thead>
+          <tbody>
+            <tr><td>Alpha miner</td><td class="num">0.990</td><td class="num">0.983</td><td class="num">0.882</td><td class="num">0.818</td></tr>
+            <tr class="chosen"><td>Inductive miner</td><td class="num">1.000</td><td class="num">0.984</td><td class="num">0.860</td><td class="num">0.760</td></tr>
+            <tr><td>Heuristic miner</td><td class="num">0.990</td><td class="num">0.983</td><td class="num">0.882</td><td class="num">0.818</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>The <strong>inductive miner reproduces the log perfectly</strong> (fitness 1.000) with the highest precision, but its model is more complex and generalises slightly less well. The <strong>alpha and heuristic miners</strong> produce simpler, better-generalising models with almost the same fit. The right choice depends on which quality dimension matters most for the project.</p>
+
+      <h2>Conclusions</h2>
+      <p>Process mining reconstructs the typical care pathway from raw log data: a first consult, parallel examinations, a second consult, then <strong>medication or surgery</strong>, and a final consult. Core examinations are universal, specialised care depends on the case, and the key decision point comes after the second consult.</p>
+      <p>The time-based models show <strong>where throughput time could be cut</strong>, and the workload analysis shows <strong>how unevenly work is spread across staff</strong>. Applied to real hospital data, the same approach could help make care processes faster and more efficient.</p>
+      <p class="note"><strong>Limitation.</strong> The event log is artificial and was created for teaching, so the findings demonstrate the method rather than describe a real hospital.</p>
+
+      <p style="margin-top:32px"><a href="https://github.com/rolandkeszi/hospital-process-mining">→ Full code and executed notebook on GitHub</a></p>
+      <p class="meta" style="margin-top:24px">Data: <a href="https://gitlab.com/healthcare2/process-mining-tutorial">Process mining in healthcare tutorial</a> (artificial event log). Reference: van der Aalst, W. M. P., <i>Process Mining</i>, Springer.</p>
+    </article>
+
+    <footer>© 2026 Roland Keszi · <a href="../">Portfolio</a></footer>
+  </div>
+</body>
+</html>

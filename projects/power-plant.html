@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Power Plant Output · Roland Keszi</title>
+  <meta name="description" content="Case study: estimating the electrical output of a combined cycle power plant with regression models, validated by cross-validation and on an independent sample.">
+  <meta property="og:title" content="Estimating power plant output with regression models">
+  <meta property="og:description" content="An interpretable linear model (R² = 0.93) validated with cross-validation and an independent sample.">
+  <meta property="og:image" content="https://rolandkeszi.github.io/assets/img/pp_model_comparison.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="top">
+      <a class="name" href="../">Roland Keszi</a>
+      <nav><a href="../#projects">Projects</a><a href="https://github.com/rolandkeszi">GitHub</a><a href="https://www.linkedin.com/in/rolandkeszi/">LinkedIn</a></nav>
+    </header>
+
+    <a class="back" href="../#projects">← All projects</a>
+
+    <section class="case-head">
+      <h1>Estimating power plant output with regression models</h1>
+      <p class="lede">A case study in modelling the electrical output of a combined cycle power plant from ambient conditions and predicting it, using machine learning and mathematical statistics.</p>
+      <dl class="facts">
+        <div><dt>Data</dt><dd>8,568 + 1,000 hourly records, 2006–2011</dd></div>
+        <div><dt>Methods</dt><dd>EDA, OLS, variable selection, lasso, ridge, neural network, cross-validation, F-test</dd></div>
+        <div><dt>Tools</dt><dd>Python (scikit-learn, TensorFlow), IBM SPSS, Excel</dd></div>
+      </dl>
+    </section>
+
+    <article>
+      <h2>The task</h2>
+      <p>The study builds on Tüfekci (2014). The goal is to estimate the plant's net electrical output (<strong>PE</strong>) from four ambient variables: <strong>ambient temperature (AT)</strong>, <strong>exhaust vacuum (V)</strong>, <strong>atmospheric pressure (AP)</strong> and <strong>relative humidity (RH)</strong>.</p>
+      <p>Two datasets were available. I used the training set of 8,568 observations to explore the data and compare regression techniques. I then applied the best model to an <strong>independent test set of 1,000 observations</strong>. The records span 2006–2011 but contain no time variable, so time-series analysis was not possible.</p>
+      <p>I ran the analyses in Python and in IBM SPSS Statistics, and cross-checked the results between the two tools.</p>
+
+      <h2>Exploratory analysis</h2>
+      <p>Before any modelling, the distribution of output shows <strong>two peaks</strong>, around 440 MW and 470 MW. Ambient temperature has two peaks as well, around 13 °C and 25 °C. These most likely reflect winter and summer operation. Without dates, that hypothesis can be neither confirmed nor rejected, but it is worth keeping in mind when interpreting the model.</p>
+      <figure>
+        <img src="../assets/img/pp_distributions.png" alt="Histograms of output and temperature, both with two peaks">
+        <figcaption>Output and temperature both show two clusters, consistent with seasonal operating regimes.</figcaption>
+      </figure>
+      <p>Temperature and exhaust vacuum move strongly with output (r = −0.95 and −0.87). Pressure moves with it more moderately (r = 0.52), and humidity only weakly (r = 0.39). At this stage these are correlations, not causal relationships.</p>
+      <figure>
+        <img src="../assets/img/01_feature_relationships.png" alt="Scatter plots of output against each ambient variable">
+      </figure>
+      <p>Cleaning removed <strong>36 duplicate rows</strong> and the values outside 1.5 × the interquartile range, leaving <strong>8,440 observations</strong>. All variables are measured on a ratio scale, so no transformation or dummy coding was needed.</p>
+
+      <h2>From one variable to a full model</h2>
+      <p>Simple regressions with one predictor each show how much of the output each variable explains on its own. Temperature alone explains 90%, but none of the single-variable models is enough.</p>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Predictor</th><th class="num">Slope</th><th class="num">R²</th></tr></thead>
+          <tbody>
+            <tr><td>Ambient temperature (AT)</td><td class="num">−2.17 MW per °C</td><td class="num">0.899</td></tr>
+            <tr><td>Exhaust vacuum (V)</td><td class="num">−1.17</td><td class="num">0.757</td></tr>
+            <tr><td>Atmospheric pressure (AP)</td><td class="num">+1.49</td><td class="num">0.266</td></tr>
+            <tr><td>Relative humidity (RH)</td><td class="num">+0.46</td><td class="num">0.150</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>For the multivariable model I compared the four variable-selection procedures in SPSS: <strong>forward, backward, stepwise and enter</strong>. All four converged on the same model with all four predictors. Variables entered in the order AT → RH → V → AP, and the final model reached <strong>R² = 0.928</strong> with a standard error of 4.59 MW. Every coefficient is significant (p &lt; 0.001).</p>
+
+      <h2>Comparing model families</h2>
+      <p>Beyond ordinary least squares, I tested polynomial terms, regularised regressions and a neural network with two hidden layers, built in TensorFlow and trained for 100 epochs.</p>
+      <figure>
+        <img src="../assets/img/pp_model_comparison.png" alt="Test R² of five models; polynomial 0.930, ridge and lasso 0.926, linear 0.921, neural network 0.912">
+        <figcaption>All models land within about two points of R² on the test split.</figcaption>
+      </figure>
+      <ul>
+        <li><strong>Polynomial terms</strong> (15 predictors) gave the highest test R² of 0.930, but the terms have no clear physical interpretation.</li>
+        <li><strong>Lasso and ridge</strong> regularisation performed on a par with plain regression (R² = 0.926), so overfitting was not a concern.</li>
+        <li><strong>The neural network</strong> did not beat the linear model (R² = 0.912, RMSE 5.07 MW). This does not mean that a differently designed network could not do better.</li>
+      </ul>
+
+      <h2>The final model</h2>
+      <p>Given the small differences in accuracy, I chose the <strong>linear regression for its interpretability</strong>:</p>
+      <p class="equation">PE = 435.03 − 1.967·AT − 0.236·V + 0.081·AP − 0.157·RH</p>
+      <p>Holding the other conditions constant, <strong>every additional °C of ambient temperature reduces output by about 2 MW</strong>. Higher exhaust vacuum and humidity also lower output, while higher pressure raises it slightly. On the training data the model reaches R² = 0.929, an MAE of 3.64 MW and an RMSE of 4.55 MW.</p>
+
+      <h2>Validation</h2>
+      <p><strong>Cross-validation.</strong> I ran 5-fold cross-validation to rule out the possibility that a lucky train/test split drove the results. The folds stay in a narrow band (mean R² = 0.927, mean MSE = 21.1), with no outlying fold.</p>
+      <figure>
+        <img src="../assets/img/pp_cross_validation.png" alt="R² of five cross-validation folds between 0.923 and 0.934">
+      </figure>
+      <p><strong>Independent sample.</strong> I applied the model to the 1,000 held-out observations. The mean predicted output was 454.50 MW on the training data and 453.18 MW on the independent sample. An F-test comparing the residual variances of the two samples gave <strong>F = 1.016</strong>, so the variances are effectively equal. The homoscedasticity assumption holds, and the model generalises to unseen data.</p>
+
+      <h2>Conclusions</h2>
+      <p>The four ambient variables give a <strong>reliable estimate of the plant's electrical output</strong> with a simple, transparent linear model. I confirmed its validity with independent methods: cross-validation, an independent sample and a test of equal residual variances. Temperature is by far the most important factor.</p>
+      <p class="note"><strong>Limitations.</strong> The data contain no timestamps, so effects such as equipment ageing could not be modelled. Domain-level engineering knowledge was outside the scope of this data science study.</p>
+
+      <h2>Further work</h2>
+      <p>In a later replication on the public dataset, tree ensembles (gradient boosting) reduced the error further, to R² = 0.965. SHAP values confirmed temperature as the dominant driver. The code is in the <a href="https://github.com/rolandkeszi/power-plant-output-prediction">repository</a>.</p>
+
+      <p class="meta" style="margin-top:40px">Reference: Tüfekci, P. (2014). Prediction of full load electrical power output of a base load operated combined cycle power plant using machine learning methods. <i>International Journal of Electrical Power &amp; Energy Systems</i>, 60, 126–140.</p>
+    </article>
+
+    <footer>© 2026 Roland Keszi · <a href="../">Portfolio</a></footer>
+  </div>
+</body>
+</html>

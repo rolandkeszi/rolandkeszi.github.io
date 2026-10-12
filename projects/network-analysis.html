@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Network Structures · Roland Keszi</title>
+  <meta name="description" content="Case study: network science applied to research literature, a Facebook friendship network and social media text.">
+  <meta property="og:title" content="Network structures in research literature, social media and text">
+  <meta property="og:description" content="A scale-free Facebook network, a map of the sentiment analysis literature and a tweet similarity network.">
+  <meta property="og:image" content="https://rolandkeszi.github.io/assets/img/sna_01_network_hubs.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="top">
+      <a class="name" href="../">Roland Keszi</a>
+      <nav><a href="../#projects">Projects</a><a href="https://github.com/rolandkeszi">GitHub</a><a href="https://www.linkedin.com/in/rolandkeszi/">LinkedIn</a></nav>
+    </header>
+
+    <a class="back" href="../#projects">← All projects</a>
+
+    <section class="case-head">
+      <h1>Network structures in research literature, social media and text</h1>
+      <p class="lede">Network science applied to three kinds of human-generated data, as groundwork for sentiment analysis research: a map of the research field, the structure of a real social network, and topical clusters in social media messages.</p>
+      <dl class="facts">
+        <div><dt>Data</dt><dd>OpenAlex publications, SNAP ego-Facebook (4,039 users), political tweets (aggregated)</dd></div>
+        <div><dt>Methods</dt><dd>Co-occurrence maps, degree distribution, hubs, community detection, TF-IDF similarity</dd></div>
+        <div><dt>Tools</dt><dd>Python (NetworkX, spaCy), Gephi, VOSviewer</dd></div>
+      </dl>
+    </section>
+
+    <article>
+      <h2>Why networks?</h2>
+      <p>Text written by people has no structure of its own. Network tools are one way to find order in it: in how publications on a topic relate to each other, in how people connect, and in how their messages resemble each other. This study tested several such tools side by side before a larger sentiment analysis project.</p>
+
+      <h2>1. Mapping the sentiment analysis literature</h2>
+      <p>I pulled bibliographic data on 2024 publications from the <strong>OpenAlex API</strong>, mapped the terms that co-occur in abstracts with <strong>VOSviewer</strong>, and measured the network in <strong>Gephi</strong>.</p>
+      <figure>
+        <img src="../assets/img/sna_lit_keyword_map.png" alt="VOSviewer keyword map of the sentiment analysis literature">
+        <figcaption>Co-occurrence map of research fields in 2024 sentiment analysis publications. The network has 286 nodes and 8,633 edges, a density of 0.21 and three communities (modularity 0.23).</figcaption>
+      </figure>
+      <p>Three fields form dense clusters. <strong>Psychology and social psychology</strong> provide the theoretical grounding. <strong>Political science</strong> takes part through elections and civic behaviour. <strong>Computer science</strong> contributes the methods, and NLP sits between them. The degree distribution is scale-free: a few highly connected publications and many weakly connected ones.</p>
+      <p>A practical lesson was that <strong>the search term matters</strong>. Searching for <i>social sentiment</i> returned mostly COVID-19 papers, which made <i>sentiment analysis</i> the more relevant query.</p>
+
+      <h2>2. Hubs and scale-free structure in a Facebook network</h2>
+      <p>The SNAP <i>ego-Facebook</i> network contains <strong>4,039 anonymised users and 88,234 friendships</strong>. The average user has 44 friends, and any two users are on average only <strong>3.7 steps apart</strong>.</p>
+      <figure>
+        <img src="../assets/img/sna_01_network_hubs.png" alt="Facebook friendship network with the three largest hubs highlighted" style="max-width:560px;margin:0 auto">
+        <figcaption>The network breaks into distinct friendship circles. The three largest hubs (nodes 107, 1684 and 1912, in red) connect hundreds of users each.</figcaption>
+      </figure>
+      <p>Is the network random or scale-free? The answer is in the <strong>tail of the degree distribution</strong>. A random network with the same average degree would produce a narrow Poisson peak. This network instead has a long, heavy tail: most users have few friends, and a few hubs have hundreds.</p>
+      <figure>
+        <img src="../assets/img/sna_03_degree_distribution.png" alt="Degree distribution on linear and log-log scales compared with Poisson">
+        <figcaption>On the log–log plot the observed degrees (blue) spread over three orders of magnitude, far from the Poisson curve (red). This is the signature of a scale-free network.</figcaption>
+      </figure>
+      <p>This confirms that <strong>the network follows a power-law degree distribution and is not randomly organised</strong>, as Barabási (2016) describes for real social networks.</p>
+
+      <h2>3. A similarity network of social media messages</h2>
+      <p>I processed a public set of political tweets with <strong>spaCy</strong>, measured the similarity between them with <strong>TF-IDF</strong>, and connected similar messages with <strong>NetworkX</strong> using a force-directed layout.</p>
+      <p>Similar tweets formed small topical clusters, for example on workplace harassment, housing policy, immigration and agriculture. Combining NLP with network methods made the topical structure of the corpus visible. This is a useful step before sentiment analysis.</p>
+      <p class="note"><strong>A negative result worth keeping.</strong> The same TF-IDF approach on a small pilot survey of 207 students' open-ended answers gave no meaningful structure: the network of the 50 most frequent words was almost complete. That finding shaped the design of later, larger studies. The raw survey data are not published.</p>
+
+      <h2>Conclusions</h2>
+      <p>Network tools give a fast, <strong>bird's-eye view of a research field</strong> and help focus the literature search. The Facebook network is <strong>scale-free and dominated by a few hubs</strong>, the hallmark of non-random social networks. <strong>Text similarity networks</strong> reveal topical clusters in social media. The study also showed which tools work for which task: Python (NetworkX, spaCy), Gephi and VOSviewer.</p>
+
+      <p style="margin-top:32px"><a href="https://github.com/rolandkeszi/social-network-analysis">→ Code and executed notebook on GitHub</a></p>
+      <p class="meta" style="margin-top:24px">Data: OpenAlex; SNAP ego-Facebook (McAuley &amp; Leskovec, 2012). Reference: Barabási, A.-L. (2016). <i>Network Science</i>. Cambridge University Press.</p>
+    </article>
+
+    <footer>© 2026 Roland Keszi · <a href="../">Portfolio</a></footer>
+  </div>
+</body>
+</html>
