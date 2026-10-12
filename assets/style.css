@@ -77,6 +77,19 @@ h2.section { font-size: 13px; font-weight: 600; text-transform: uppercase; lette
 
 footer { border-top: 1px solid var(--line); margin-top: 48px; padding: 28px 0 56px; font-size: 14px; color: var(--muted); }
 
+/* licence popover */
+.lic-btn { font: inherit; color: var(--link); background: none; border: 0; padding: 0; cursor: pointer; }
+.lic-btn:hover { text-decoration: underline; }
+.lic-pop { max-width: min(380px, calc(100vw - 32px)); margin: auto; padding: 20px 22px; border: 1px solid var(--line); border-radius: 12px; background: var(--bg); color: var(--text-2); font-size: 14.5px; line-height: 1.55; box-shadow: 0 12px 40px rgba(0, 0, 0, .18); }
+.lic-pop::backdrop { background: rgba(0, 0, 0, .25); }
+.lic-pop p { margin: 0 0 8px; }
+.lic-pop ul { margin: 0 0 10px; padding-left: 20px; }
+.lic-pop .lic-title { font-weight: 700; color: var(--text); font-size: 16px; margin-bottom: 2px; }
+.lic-pop .lic-name { color: var(--muted); font-size: 13px; margin-bottom: 12px; }
+.lic-pop .lic-note { color: var(--muted); font-size: 13px; }
+.lic-actions { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 14px; }
+.lic-actions button { font: inherit; font-size: 14px; color: var(--text); background: color-mix(in srgb, var(--line) 60%, transparent); border: 1px solid var(--line); border-radius: 8px; padding: 6px 14px; cursor: pointer; }
+
 /* case study */
 .back { font-size: 15px; display: inline-block; margin-top: 8px; }
 .case-head { padding: 40px 0 36px; border-bottom: 1px solid var(--line); }
