@@ -35,7 +35,7 @@ DEGREES = [
     {
         "year": "1998", "logo": "elte.png",
         "school": ("ELTE - Faculty of Social Sciences", "ELTE - Társadalomtudományi Kar"),
-        "degree": ("Master's degree in Sociology", "Egyetemi oklevél, szociológia"),
+        "degree": ("Master's degree in Sociology", "Egyetemi mesterdiploma, szociológia"),
         "detail": ("Specialisations: research sociology; change management",
                    "Szakirányok: kutató szociológus; változásmenedzsment"),
     },
@@ -49,7 +49,7 @@ TEXT = {
     },
     "hu": {
         "title": "Végzettség · Keszi Roland",
-        "description": "Keszi Roland egyetemi végzettségei: mesterséges intelligencia szakmérnök képzés (Pannon Egyetem - Mérnöki Kar), szociológia PhD (Eötvös Loránd Tudományegyetem) és egyetemi oklevél (ELTE - Társadalomtudományi Kar), MBA (Budapesti Corvinus Egyetem - Corvinus Business School).",
+        "description": "Keszi Roland egyetemi végzettségei: mesterséges intelligencia szakmérnök képzés (Pannon Egyetem - Mérnöki Kar), szociológia PhD (Eötvös Loránd Tudományegyetem) és egyetemi mesterdiploma (ELTE - Társadalomtudományi Kar), MBA (Budapesti Corvinus Egyetem - Corvinus Business School).",
         "h1": "Végzettség",
     },
 }
