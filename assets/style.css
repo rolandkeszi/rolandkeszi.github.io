@@ -281,3 +281,8 @@ tr.chosen td { color: var(--text); font-weight: 600; }
 @media (max-width: 680px) {
   .photo-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 }
+article h3 { font-size: 19px; line-height: 1.3; letter-spacing: -.01em; font-weight: 600; margin: 32px 0 8px; color: var(--text); }
+details.refs { margin: 28px 0 8px; font-size: 14px; color: var(--muted); }
+details.refs summary { cursor: pointer; color: var(--text); font-weight: 500; }
+details.refs ol { padding-left: 20px; margin: 12px 0 0; }
+details.refs li { margin: 0 0 8px; color: var(--text-2); overflow-wrap: anywhere; }
