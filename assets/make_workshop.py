@@ -8,7 +8,6 @@ from pathlib import Path
 from site_shell import ROOT, write_page
 
 REG_URL = "https://keszi.krolify.hu/hu/kutatas/elte-innofair/"
-PHOTOS_URL = "https://drive.google.com/drive/folders/1SNw69G51sgFOmnAuI-xXAqEu1McVmtoh"
 
 # Cumulative registrations on the workshop's own page at the end of each day,
 # 8-30 September 2026, read from the labelled values of the original chart.
@@ -81,7 +80,7 @@ TEXT = {
         ],
         "figure_caption": "Figure 1. Cumulative number of registrations on the workshop's own registration page, 8–30 September 2026 (n = 97).",
         "photos": "Photos",
-        "links": [("Workshop registration page", REG_URL), ("All photos (Google Drive)", PHOTOS_URL)],
+        "links": [("Workshop registration page", REG_URL)],
         "back": "← All projects",
         "close": "Close",
         "enlarge": "Enlarge photo",
@@ -140,7 +139,7 @@ TEXT = {
         ],
         "figure_caption": "1. ábra. A workshop saját regisztrációs oldalán regisztrálók kumulált száma, 2026. szeptember 8–30. (n = 97)",
         "photos": "Fotók",
-        "links": [("A workshop regisztrációs oldala", REG_URL), ("Az összes fotó (Google Drive)", PHOTOS_URL)],
+        "links": [("A workshop regisztrációs oldala", REG_URL)],
         "back": "← Összes projekt",
         "close": "Bezárás",
         "enlarge": "Fotó nagyítása",
