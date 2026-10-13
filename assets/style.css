@@ -47,11 +47,6 @@ a:hover { text-decoration: underline; }
 .top .name { display: inline-flex; flex-direction: column; line-height: 1.25; }
 .top .name:hover { text-decoration: none; }
 .tagline { font-size: 13px; font-weight: 400; color: var(--muted); letter-spacing: .01em; margin-top: 2px; }
-.tagline .tl-short { display: none; }
-@media (max-width: 1200px) {
-  .tagline .tl-long { display: none; }
-  .tagline .tl-short { display: inline; }
-}
 .top nav { display: flex; align-items: center; }
 .top nav a { color: var(--muted); margin-left: 22px; }
 .top nav a:hover { color: var(--text); text-decoration: none; }
@@ -259,4 +254,18 @@ tr.chosen td { color: var(--text); font-weight: 600; }
   .edu-item .logo-tile { width: auto; justify-self: start; height: 76px; }
   .edu-item .logo-tile img { height: 46px; max-width: 220px; }
   .edu-text h2 { font-size: 19px; }
+}
+
+/* the Hungarian tagline is two lines, so the header is taller below 900px */
+@media (max-width: 900px) {
+  html[lang="hu"] .menu { top: 124px; }
+  html[lang="hu"] .about-pop { top: 126px; }
+}
+@media (max-width: 680px) {
+  html[lang="hu"] .menu { top: 114px; }
+  html[lang="hu"] .about-pop { top: 116px; }
+}
+@media (max-width: 420px) {
+  html[lang="hu"] .menu { top: 108px; }
+  html[lang="hu"] .about-pop { top: 110px; }
 }
