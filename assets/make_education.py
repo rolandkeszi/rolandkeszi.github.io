@@ -13,28 +13,28 @@ from site_shell import write_page
 DEGREES = [
     {
         "year": "2026", "logo": "pannon.png",
-        "school": ("University of Pannonia, Faculty of Engineering", "Pannon Egyetem, Mérnöki Kar"),
+        "school": ("University of Pannonia - Faculty of Engineering", "Pannon Egyetem - Mérnöki Kar"),
         "degree": ("Data and Systems Scientist and Artificial Intelligence Solution Development Specialist",
                    "Mesterséges intelligencia megoldásokat fejlesztő adat- és rendszertudományi szakember"),
         "detail": ("Postgraduate artificial intelligence specialist engineer programme", "Mesterséges intelligencia szakmérnök képzés"),
     },
     {
         "year": "2006", "logo": "elte.png",
-        "school": ("Eötvös Loránd University (ELTE)", "Eötvös Loránd Tudományegyetem (ELTE)"),
+        "school": ("ELTE University", "Eötvös Loránd Tudományegyetem (ELTE)"),
         "degree": ("PhD in Sociology", "Doktori (PhD) fokozat, szociológia"),
         "detail": ("Sociological sciences, quantitative empirical sociology",
                    "Szociológiai tudományok, kvantitatív empirikus szociológia"),
     },
     {
         "year": "2003", "logo": "corvinus.svg",
-        "school": ("Corvinus University of Budapest", "Budapesti Corvinus Egyetem"),
+        "school": ("Corvinus University", "Budapesti Corvinus Egyetem"),
         "degree": ("Master of Business Administration (MBA)", "Master of Business Administration (MBA)"),
         "detail": ("Awarded by the Budapest University of Economic Sciences and Public Administration, now Corvinus University of Budapest",
                    "Kiállító: Budapesti Közgazdaságtudományi és Államigazgatási Egyetem, ma Budapesti Corvinus Egyetem"),
     },
     {
         "year": "1998", "logo": "elte.png",
-        "school": ("Eötvös Loránd University (ELTE)", "Eötvös Loránd Tudományegyetem (ELTE)"),
+        "school": ("ELTE University", "Eötvös Loránd Tudományegyetem (ELTE)"),
         "degree": ("Master's degree in Sociology", "Egyetemi oklevél, szociológia"),
         "detail": ("Specialisations: research sociology; change management",
                    "Szakirányok: kutató szociológus; változásmenedzsment"),
@@ -44,12 +44,12 @@ DEGREES = [
 TEXT = {
     "en": {
         "title": "Education · Roland Keszi",
-        "description": "University degrees of Roland Keszi: artificial intelligence specialist engineer programme (University of Pannonia), PhD and master's degree in sociology (ELTE), MBA (Corvinus University of Budapest).",
+        "description": "University degrees of Roland Keszi: artificial intelligence specialist engineer programme (University of Pannonia - Faculty of Engineering), PhD and master's degree in sociology (ELTE University), MBA (Corvinus University).",
         "h1": "Education",
     },
     "hu": {
         "title": "Végzettség · Keszi Roland",
-        "description": "Keszi Roland egyetemi végzettségei: mesterséges intelligencia szakmérnök képzés (Pannon Egyetem), szociológia PhD és egyetemi oklevél (ELTE), MBA (Budapesti Corvinus Egyetem).",
+        "description": "Keszi Roland egyetemi végzettségei: mesterséges intelligencia szakmérnök képzés (Pannon Egyetem - Mérnöki Kar), szociológia PhD és egyetemi oklevél (ELTE), MBA (Budapesti Corvinus Egyetem).",
         "h1": "Végzettség",
     },
 }
