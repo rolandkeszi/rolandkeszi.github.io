@@ -20,7 +20,7 @@ DEGREES = [
     },
     {
         "year": "2006", "logo": "elte.png",
-        "school": ("ELTE University - Faculty of Social Sciences", "ELTE - Társadalomtudományi Kar"),
+        "school": ("ELTE University", "Eötvös Loránd Tudományegyetem (ELTE)"),
         "degree": ("PhD in Sociology", "Doktori (PhD) fokozat, szociológia"),
         "detail": ("Sociological sciences, quantitative empirical sociology",
                    "Szociológiai tudományok, kvantitatív empirikus szociológia"),
@@ -34,7 +34,7 @@ DEGREES = [
     },
     {
         "year": "1998", "logo": "elte.png",
-        "school": ("ELTE University", "Eötvös Loránd Tudományegyetem (ELTE)"),
+        "school": ("ELTE University - Faculty of Social Sciences", "ELTE - Társadalomtudományi Kar"),
         "degree": ("Master's degree in Sociology", "Egyetemi oklevél, szociológia"),
         "detail": ("Specialisations: research sociology; change management",
                    "Szakirányok: kutató szociológus; változásmenedzsment"),
