@@ -1,17 +1,14 @@
 """Build certificates.html and hu/certificates.html from the list below.
 
-Header and footer are copied from index.html and hu/index.html, so the
-certificate pages always match the rest of the site. Certificate images live
-in assets/img/certs/<img>.jpg, issuer logos in assets/img/logos/.
+The page shell (header, footer, <head>) comes from site_shell.py. Certificate
+images live in assets/img/certs/<img>.jpg, issuer logos in assets/img/logos/.
 
     python assets/make_certificates.py
 """
 import html
-import re
-from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
-CSS_V = re.search(r"style\.css\?v=(\d+)", (ROOT / "index.html").read_text(encoding="utf-8")).group(1)
+from site_shell import write_page
+
 LINKEDIN = "https://www.linkedin.com/in/rolandkeszi/details/certifications/"
 V = "https://coursera.org/verify/"
 
@@ -199,7 +196,6 @@ MONTHS = {
 
 TEXT = {
     "en": {
-        "src": "index.html", "out": "certificates.html",
         "title": "Certificates · Roland Keszi",
         "description": "Professional certificates of Roland Keszi in data analytics, machine learning and AI from Google, IBM, Microsoft, Stanford University, DeepLearning.AI and others.",
         "h1": "Certificates",
@@ -212,10 +208,8 @@ TEXT = {
         "courses": "courses", "course": "Course", "included": "Courses in this programme",
         "count": ("certificate", "certificates"),
         "enlarge": "Enlarge certificate", "close": "Close",
-        "en_href": "certificates.html", "hu_href": "hu/certificates.html",
     },
     "hu": {
-        "src": "hu/index.html", "out": "hu/certificates.html",
         "title": "Tanúsítványok · Keszi Roland",
         "description": "Keszi Roland adatelemzési, gépi tanulási és MI-tanúsítványai a Google-tól, az IBM-től, a Microsofttól, a Stanford Egyetemtől, a DeepLearning.AI-tól és másoktól.",
         "h1": "Tanúsítványok",
@@ -228,7 +222,6 @@ TEXT = {
         "courses": "kurzus", "course": "Kurzus", "included": "A program kurzusai",
         "count": ("tanúsítvány", "tanúsítvány"),
         "enlarge": "Tanúsítvány nagyítása", "close": "Bezárás",
-        "en_href": "../certificates.html", "hu_href": "certificates.html",
     },
 }
 
@@ -290,16 +283,7 @@ def count(iss: dict) -> int:
 
 def build(lang: str) -> None:
     t = TEXT[lang]
-    page = (ROOT / t["src"]).read_text(encoding="utf-8")
     prefix = "" if lang == "en" else "../"
-
-    header = re.search(r"<header class=\"top\">.*?</header>", page, re.S).group(0)
-    header = header.replace('href="#projects"', 'href="./#projects"')
-    header = header.replace('<a href="certificates.html">', '<a href="certificates.html" aria-current="page">')
-    header = re.sub(r'(<a[^>]*?href=")[^"]*(" hreflang="en")', rf'\g<1>{t["en_href"]}\2', header)
-    header = re.sub(r'(<a[^>]*?href=")[^"]*(" hreflang="hu")', rf'\g<1>{t["hu_href"]}\2', header)
-    popovers = re.search(r'<div id="photo-large".*?</div>\s*<div id="about-info".*?</div>', page, re.S).group(0)
-    footer = re.search(r"<footer>.*?</footer>", page, re.S).group(0)
 
     groups = []
     for iss in ISSUERS:
@@ -318,57 +302,30 @@ def build(lang: str) -> None:
         )
 
     intro = "\n".join(f'      <p class="lede">{para}</p>' for para in t["intro"])
-
-    out = f"""<!doctype html>
-<html lang="{lang}">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{t["title"]}</title>
-  <meta name="description" content="{t["description"]}">
-  <meta property="og:title" content="{t["title"]}">
-  <meta property="og:description" content="{t["description"]}">
-  <meta property="og:image" content="https://rolandkeszi.github.io/assets/img/certs/google-data-analytics.jpg">
-  <link rel="alternate" hreflang="en" href="https://rolandkeszi.github.io/certificates.html">
-  <link rel="alternate" hreflang="hu" href="https://rolandkeszi.github.io/hu/certificates.html">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{prefix}assets/style.css?v={CSS_V}">
-</head>
-<body>
-  {header}
-  {popovers}
-  <div id="cert-large" class="cert-pop" popover><button type="button" popovertarget="cert-large" popovertargetaction="hide" aria-label="{t["close"]}"><img alt=""></button></div>
-  <div class="wrap">
-
-    <section class="case-head cert-head">
+    body = f"""    <section class="case-head cert-head">
       <h1>{t["h1"]}</h1>
 {intro}
       <p class="cert-hint">{t["hint"]}</p>
       <a class="linkedin-all" href="{LINKEDIN}" target="_blank" rel="noopener">{t["linkedin"]} ↗</a>
     </section>
 
-{chr(10).join(groups)}
-
-    {footer}
-  </div>
+{chr(10).join(groups)}"""
+    popover = f"""
+  <div id="cert-large" class="cert-pop" popover><button type="button" popovertarget="cert-large" popovertargetaction="hide" aria-label="{t["close"]}"><img alt=""></button></div>"""
+    script = """
   <script>
     // Open a certificate image in the popover instead of leaving the page.
     const pop = document.getElementById("cert-large"), big = pop.querySelector("img");
-    document.querySelectorAll(".cert-img").forEach(a => a.addEventListener("click", e => {{
+    document.querySelectorAll(".cert-img").forEach(a => a.addEventListener("click", e => {
       if (!pop.showPopover) return;
       e.preventDefault();
       big.src = a.getAttribute("href");
       big.alt = a.querySelector("img").alt;
       pop.showPopover();
-    }}));
-  </script>
-</body>
-</html>
-"""
-    (ROOT / t["out"]).write_text(out, encoding="utf-8", newline="\n")
-    print("wrote", t["out"])
+    }));
+  </script>"""
+    write_page(lang, "certificates.html", t["title"], t["description"], "assets/img/certs/google-data-analytics.jpg",
+               body, extra_popovers=popover, script=script)
 
 
 if __name__ == "__main__":
