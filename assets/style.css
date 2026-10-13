@@ -256,16 +256,16 @@ tr.chosen td { color: var(--text); font-weight: 600; }
   .edu-text h2 { font-size: 19px; }
 }
 
-/* the Hungarian tagline is two lines, so the header is taller below 900px */
+/* the tagline is two lines, so the header is taller below 900px */
 @media (max-width: 900px) {
-  html[lang="hu"] .menu { top: 124px; }
-  html[lang="hu"] .about-pop { top: 126px; }
+  .menu { top: 124px; }
+  .about-pop { top: 126px; }
 }
 @media (max-width: 680px) {
-  html[lang="hu"] .menu { top: 114px; }
-  html[lang="hu"] .about-pop { top: 116px; }
+  .menu { top: 114px; }
+  .about-pop { top: 116px; }
 }
 @media (max-width: 420px) {
-  html[lang="hu"] .menu { top: 108px; }
-  html[lang="hu"] .about-pop { top: 110px; }
+  .menu { top: 108px; }
+  .about-pop { top: 110px; }
 }
