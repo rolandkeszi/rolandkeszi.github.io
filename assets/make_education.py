@@ -67,7 +67,7 @@ def build(lang: str) -> None:
         items.append(
             f'      <article class="edu-item">\n'
             f'        <span class="logo-tile{(" " + d["tile"]) if d.get("tile") else ""}"><img src="{prefix}assets/img/logos/{logo}" alt="{html.escape(d["school"][i])} logo"></span>\n'
-            f'        <div class="edu-text"><span class="badge">{d["year"]}</span>'
+            f'        <div class="edu-text">'
             f'<h2>{html.escape(d["degree"][i])}</h2>'
             f'<p class="edu-school">{html.escape(d["school"][i])}</p>'
             f'<p class="cert-meta">{d["detail"][i]}</p>'
