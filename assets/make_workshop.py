@@ -35,7 +35,7 @@ TEXT = {
         "facts": [
             ("Event", "ELTE Innofair 2026 · 30 September 2026 · Harmónia Hall, ELTE Lágymányos Campus"),
             ("My role", "Initiator, organiser, moderator and opening speaker"),
-            ("Audience", "129 registrations: special needs teachers, researchers, industry experts"),
+            ("Audience", "129 registrations: industry experts, researchers, special needs teachers"),
         ],
         "sections": [
             ("The event", [
@@ -94,7 +94,7 @@ TEXT = {
         "facts": [
             ("Esemény", "ELTE Innofair 2026 · 2026. szeptember 30. · Harmónia terem, ELTE Lágymányosi Campus"),
             ("Szerepem", "Ötletgazda, szervező, moderátor és nyitóelőadó"),
-            ("Közönség", "129 regisztráló: gyógypedagógusok, kutatók, ipari szakemberek"),
+            ("Közönség", "129 regisztráló: ipari szakemberek, kutatók, gyógypedagógusok"),
         ],
         "sections": [
             ("Az esemény", [
