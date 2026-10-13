@@ -180,7 +180,7 @@ tr.chosen td { color: var(--text); font-weight: 600; }
 .cert-pop { margin: auto; padding: 0; border: 0; background: transparent; overflow: visible; }
 .cert-pop::backdrop { background: rgba(0, 0, 0, .6); }
 .cert-pop button { display: block; padding: 0; border: 0; background: none; cursor: zoom-out; }
-.cert-pop img { width: min(1000px, 94vw); max-height: 90vh; object-fit: contain; border-radius: 6px; box-shadow: 0 20px 60px rgba(0, 0, 0, .35); background: #fff; }
+.cert-pop img { width: auto; max-width: min(1000px, 94vw); max-height: 90vh; object-fit: contain; border-radius: 6px; box-shadow: 0 20px 60px rgba(0, 0, 0, .35); background: #fff; }
 @media (max-width: 760px) {
   .course-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
@@ -268,4 +268,16 @@ tr.chosen td { color: var(--text); font-weight: 600; }
 @media (max-width: 420px) {
   .menu { top: 108px; }
   .about-pop { top: 110px; }
+}
+
+/* workshop page */
+.ws-links { margin-top: 20px; }
+.ws-links a { margin-right: 18px; }
+.photo-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin: 20px 0 8px; }
+.photo-grid .photo { margin: 0; }
+.photo-grid .cert-img { aspect-ratio: 4 / 3; background: var(--line); }
+.photo-grid .cert-img img { object-fit: cover; padding: 0; border: 0; border-radius: 0; background: none; }
+.photo-grid figcaption { font-size: 13px; margin-top: 6px; }
+@media (max-width: 680px) {
+  .photo-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 }

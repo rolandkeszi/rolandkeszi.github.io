@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Voice for everyone! A workshop at ELTE Innofair 2026 · Roland Keszi</title>
+  <meta name="description" content="Workshop report: language technology, speech recognition and AAC in practice, organised and moderated by Roland Keszi at ELTE Innofair 2026.">
+  <meta property="og:title" content="Voice for everyone! A workshop at ELTE Innofair 2026 · Roland Keszi">
+  <meta property="og:description" content="Workshop report: language technology, speech recognition and AAC in practice, organised and moderated by Roland Keszi at ELTE Innofair 2026.">
+  <meta property="og:image" content="https://rolandkeszi.github.io/assets/img/workshop/thumb.jpg">
+  <link rel="alternate" hreflang="en" href="https://rolandkeszi.github.io/innofair-workshop.html">
+  <link rel="alternate" hreflang="hu" href="https://rolandkeszi.github.io/hu/innofair-workshop.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css?v=21">
+</head>
+<body>
+  <header class="top"><div class="top-inner"><a class="name" href="./">Roland Keszi<span class="tagline">Artificial Intelligence &amp;<br>Data Science Portfolio</span></a>
+      <nav><button type="button" class="menu-btn" popovertarget="site-menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>Menu</button><div id="site-menu" class="menu" popover onclick="if (event.target.closest('a, .about-btn')) this.hidePopover()"><button type="button" class="about-btn" popovertarget="about-info">About</button><a href="./#projects">Projects</a><a href="certificates.html">Certificates</a><a href="education.html">Education</a></div><a class="icon" href="https://github.com/rolandkeszi" aria-label="GitHub" title="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a><a class="icon" href="https://www.linkedin.com/in/rolandkeszi/" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 4.37v6.274zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a><span class="lang"><a class="active" aria-current="true" href="innofair-workshop.html" hreflang="en" lang="en" title="English"><svg viewBox="0 0 60 30" aria-hidden="true"><clipPath id="uk-t"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath><path d="M0,0 v30 h60 v-30 z" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#uk-t)" stroke="#C8102E" stroke-width="4"/><path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/><path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/></svg><span class="sr">English</span></a><a href="hu/innofair-workshop.html" hreflang="hu" lang="hu" title="Magyar"><svg viewBox="0 0 6 3" aria-hidden="true"><rect width="6" height="1" fill="#CE2939"/><rect y="1" width="6" height="1" fill="#fff"/><rect y="2" width="6" height="1" fill="#477050"/></svg><span class="sr">Magyar</span></a></span><button type="button" class="head-avatar" popovertarget="photo-large" aria-label="Roland Keszi: Enlarge photo" title="Enlarge photo"><img src="assets/img/avatar.jpg" alt="Roland Keszi" width="40" height="40"></button></nav></div></header>
+  <div id="photo-large" class="photo-pop" popover><button type="button" popovertarget="photo-large" popovertargetaction="hide" aria-label="Close"><img src="assets/img/avatar-large.jpg" alt="Roland Keszi" width="400" height="400"></button></div>
+  <div id="about-info" class="about-pop" popover lang="en"><p>On these pages I share the results of some of my data science and artificial intelligence based analysis projects.</p></div>
+  <div id="cert-large" class="cert-pop" popover><button type="button" popovertarget="cert-large" popovertargetaction="hide" aria-label="Close"><img alt=""></button></div>
+  <div class="wrap">
+
+    <a class="back" href="./#projects">← All projects</a>
+    <section class="case-head">
+      <h1>Voice for everyone! Language technology, speech recognition and AAC in practice</h1>
+      <p class="lede">A workshop I initiated, organised and moderated at ELTE Innofair 2026, with an opening talk of my own. It showed, through concrete, practical projects, how language technology and automatic speech recognition can help people whose speech is impaired.</p>
+      <dl class="facts">
+        <div><dt>Event</dt><dd>ELTE Innofair 2026 · 30 September 2026 · Harmónia Hall, ELTE Lágymányos Campus</dd></div>
+        <div><dt>My role</dt><dd>Initiator, organiser, moderator and opening speaker</dd></div>
+        <div><dt>Audience</dt><dd>129 registrations: special needs teachers, researchers, industry experts</dd></div>
+      </dl>
+      <p class="meta ws-links"><a href="https://keszi.krolify.hu/hu/kutatas/elte-innofair/" target="_blank" rel="noopener">Workshop registration page ↗</a> <a href="https://drive.google.com/drive/folders/1SNw69G51sgFOmnAuI-xXAqEu1McVmtoh" target="_blank" rel="noopener">All photos (Google Drive) ↗</a></p>
+    </section>
+
+    <article>
+      <h2>The event</h2>
+      <p>ELTE Innofair is the flagship event that showcases the innovation and industry partnerships of Eötvös Loránd University. Our workshop set out to demonstrate, through <strong>concrete, practical projects</strong>, the gaps between language technology research, its industrial applications and everyday use, with the perspective of people with disabilities whose speech is impaired at the centre.</p>
+      <p>The workshop took place on the afternoon of 30 September 2026 in the Harmónia Hall of the ELTE Lágymányos Campus. Participants were welcomed by Ádám Miklósi, member of the Hungarian Academy of Sciences, university professor and head of institute.</p>
+      <h2>My opening talk</h2>
+      <p>I opened the workshop with a talk titled <em>Language technology, speech recognition and AAC in practice</em>. It drew on two kinds of analysis:</p>
+      <ul><li><strong>Epidemiological estimates</strong> of how widespread speech disability is worldwide, and of its causes.</li><li>A <strong>scientometric overview</strong> of language technology research as a whole.</li></ul>
+      <p>I then introduced the speakers and explained how their talks built on each other.</p>
+      <h2>The programme</h2>
+      <ul><li><strong>Tibor Fegyó and co-authors</strong> (Budapest University of Technology and Economics, Faculty of Electrical Engineering and Informatics, Department of Telecommunications and Artificial Intelligence; SpeechTex Ltd.): <em>Speech recognition: a general overview and an industrial outlook</em>. A broad picture of automatic speech recognition, followed by the challenges and results of recognising dysarthric, hard-to-understand speech.</li><li><strong>Zita Kovács-Ördög</strong> (data scientist, Clementine / Minerva Institute): <em>The robot interviewer</em>. Lessons from developing a robot interviewer and practical uses of AI-based data collection, including aspects related to the communication of people with disabilities.</li><li><strong>Zoltán Répási</strong> (hahodori): a live demonstration of <em>Talkie</em>, a browser-based AAC (augmentative and alternative communication) app, and the experience gained with it. A concrete, practical solution that makes everyday communication easier for people with disabilities and their families.</li></ul>
+      <h2>Registrations and audience</h2>
+      <p><strong>129 people registered</strong> for the workshop: 97 on the workshop's own registration page and 32 on the Innofair platform. Figure 1 shows how the registrations on our own page built up over time.</p>
+      <figure><img src="assets/img/workshop/registrations-en.svg" alt="Figure 1. Cumulative number of registrations on the workshop's own registration page, 8–30 September 2026 (n = 97)." width="860" height="450"><figcaption>Figure 1. Cumulative number of registrations on the workshop's own registration page, 8–30 September 2026 (n = 97).</figcaption></figure>
+      <p>Part of the audience were current and future special needs teachers, who work directly with people who use AAC tools. They were joined by researchers, industry experts and other interested visitors. Participants asked a great many questions, ranging from the technical side of language technology through the use of the robot interviewer to the human side and personal involvement. After the official close many stayed on, and the workshop ended in informal conversations.</p>
+      <h2>Why it matters</h2>
+      <p>We wanted this programme to be part of Innofair because the event's aim, connecting research and industry, directly affects people's quality of life in our field. The perspective of people with disabilities rarely takes centre stage at technology events, yet this is where speech technology can bring some of its greatest social benefit.</p>
+      <p>The speakers took part as volunteers, without a fee. Our goal is for the workshop to start new collaborations between researchers, developers, civil initiatives and the special needs education profession.</p>
+      <h2>Photos</h2>
+      <div class="photo-grid">
+        <figure class="photo"><a class="cert-img photo-link" href="assets/img/workshop/hall.jpg" aria-label="Enlarge photo: The Harmónia Hall before the workshop"><img src="assets/img/workshop/hall-sm.jpg" alt="The Harmónia Hall before the workshop" loading="lazy"></a><figcaption>The Harmónia Hall before the workshop</figcaption></figure>
+        <figure class="photo"><a class="cert-img photo-link" href="assets/img/workshop/opening-talk.jpg" aria-label="Enlarge photo: Opening talk"><img src="assets/img/workshop/opening-talk-sm.jpg" alt="Opening talk" loading="lazy"></a><figcaption>Opening talk</figcaption></figure>
+        <figure class="photo"><a class="cert-img photo-link" href="assets/img/workshop/speech-recognition.jpg" aria-label="Enlarge photo: Speech recognition: overview and industrial outlook"><img src="assets/img/workshop/speech-recognition-sm.jpg" alt="Speech recognition: overview and industrial outlook" loading="lazy"></a><figcaption>Speech recognition: overview and industrial outlook</figcaption></figure>
+        <figure class="photo"><a class="cert-img photo-link" href="assets/img/workshop/talk.jpg" aria-label="Enlarge photo: During the talks"><img src="assets/img/workshop/talk-sm.jpg" alt="During the talks" loading="lazy"></a><figcaption>During the talks</figcaption></figure>
+        <figure class="photo"><a class="cert-img photo-link" href="assets/img/workshop/robot-interviewer-slide.jpg" aria-label="Enlarge photo: The robot interviewer"><img src="assets/img/workshop/robot-interviewer-slide-sm.jpg" alt="The robot interviewer" loading="lazy"></a><figcaption>The robot interviewer</figcaption></figure>
+        <figure class="photo"><a class="cert-img photo-link" href="assets/img/workshop/robot-interviewer.jpg" aria-label="Enlarge photo: The robot interviewer"><img src="assets/img/workshop/robot-interviewer-sm.jpg" alt="The robot interviewer" loading="lazy"></a><figcaption>The robot interviewer</figcaption></figure>
+        <figure class="photo"><a class="cert-img photo-link" href="assets/img/workshop/talkie-aac.jpg" aria-label="Enlarge photo: Live demonstration of the Talkie AAC app"><img src="assets/img/workshop/talkie-aac-sm.jpg" alt="Live demonstration of the Talkie AAC app" loading="lazy"></a><figcaption>Live demonstration of the Talkie AAC app</figcaption></figure>
+        <figure class="photo"><a class="cert-img photo-link" href="assets/img/workshop/audience.jpg" aria-label="Enlarge photo: The audience"><img src="assets/img/workshop/audience-sm.jpg" alt="The audience" loading="lazy"></a><figcaption>The audience</figcaption></figure>
+      </div>
+    </article>
+
+    <footer>© 2026 Roland Keszi · <button type="button" class="lic-btn" popovertarget="license-info">CC BY-NC 4.0</button><div id="license-info" class="lic-pop" popover lang="en"><p class="lic-title">CC BY-NC 4.0</p><p class="lic-name">Creative Commons Attribution-NonCommercial 4.0 International</p><p>You may share and adapt the content of this site only if you:</p><ul><li>credit the author (Roland Keszi) and link to the source;</li><li>do not use it for commercial purposes.</li></ul><p class="lic-note">Third-party datasets keep their own licenses.</p><div class="lic-actions"><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="license noopener">Full license text ↗</a><button type="button" popovertarget="license-info" popovertargetaction="hide">Close</button></div></div>: reuse only with credit to the author</footer>
+  </div>
+  <script>
+    // Open a photo in the popover instead of leaving the page.
+    const pop = document.getElementById("cert-large"), big = pop.querySelector("img");
+    document.querySelectorAll(".photo-link").forEach(a => a.addEventListener("click", e => {
+      if (!pop.showPopover) return;
+      e.preventDefault();
+      big.src = a.getAttribute("href");
+      big.alt = a.querySelector("img").alt;
+      pop.showPopover();
+    }));
+  </script>
+</body>
+</html>
