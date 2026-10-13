@@ -17,28 +17,13 @@ CUMULATIVE = [0, 11, 15, 16, 16, 22, 32, 41, 43, 55, 64, 66, 69, 71, 74, 74, 74,
 # (file stem, English caption, Hungarian caption) in display order.
 PHOTOS = [
     ("hall", "The Harmónia Hall before the workshop", "A Harmónia terem a workshop előtt"),
-    ("opening-talk", "Opening talk", "Nyitóelőadás"),
+    ("opening-talk", "Opening talk by Roland Keszi", "Nyitóelőadás: Keszi Roland"),
     ("speech-recognition", "Speech recognition: overview and industrial outlook", "Beszédfelismerés: általános áttekintés és ipari kitekintés"),
     ("talk", "During the talks", "Előadás közben"),
     ("robot-interviewer-slide", "The robot interviewer", "A robot kérdezőbiztos"),
     ("robot-interviewer", "The robot interviewer", "A robot kérdezőbiztos"),
     ("talkie-aac", "Live demonstration of the Talkie AAC app", "A Talkie AAC-alkalmazás élő bemutatója"),
     ("audience", "The audience", "A közönség"),
-]
-
-# Photos taken by participants (students); recognisable faces were pixelated before publication.
-STUDENT_PHOTOS = [
-    ("student-18", "The hall before the start", "A terem a kezdés előtt"),
-    ("student-45", "The workshop's title slide", "A workshop címdiája"),
-    ("student-47", "Opening talk: the scientometric map", "Nyitóelőadás: a tudománymetriai térkép"),
-    ("student-28", "Results on recognising dysarthric speech", "Eredmények a dizartriás beszéd felismeréséről"),
-    ("student-23", "Spoken dialogue systems", "Beszédválaszú rendszerek"),
-    ("student-24", "An engineering problem-solving matrix", "Mérnöki problémamegoldási mátrix"),
-    ("student-40", "The AI interviewer in practice", "Az AI kérdezőbiztos a gyakorlatban"),
-    ("student-14", "Talkie: “What would you like?”", "Talkie: „Mit szeretnél?”"),
-    ("student-15", "Talkie: an example sentence", "Talkie: egy példamondat"),
-    ("student-32", "Introducing AAC", "Az AAC bevezetése"),
-    ("student-46", "A full house", "Teli terem"),
 ]
 
 TEXT = {
@@ -96,8 +81,6 @@ TEXT = {
         ],
         "figure_caption": "Figure 1. Cumulative number of registrations on the workshop's own registration page, 8–30 September 2026 (n = 97).",
         "photos": "Photos",
-        "student_photos": "Photos by participants",
-        "student_note": "These photos were taken by workshop participants. I checked them for recognisable faces with AI-based face detection (Python, OpenCV), followed by a manual review, and anonymised every face that could be recognised.",
         "links": [("Workshop registration page", REG_URL), ("All photos (Google Drive)", PHOTOS_URL)],
         "back": "← All projects",
         "close": "Close",
@@ -157,8 +140,6 @@ TEXT = {
         ],
         "figure_caption": "1. ábra. A workshop saját regisztrációs oldalán regisztrálók kumulált száma, 2026. szeptember 8–30. (n = 97)",
         "photos": "Fotók",
-        "student_photos": "A résztvevők fotói",
-        "student_note": "Az alábbi fotókat a workshop résztvevői készítették. A felismerhető arcokat MI-alapú (Python, OpenCV) arcfelismeréssel és kézi ellenőrzéssel azonosítottam, és anonimizáltam.",
         "links": [("A workshop regisztrációs oldala", REG_URL), ("Az összes fotó (Google Drive)", PHOTOS_URL)],
         "back": "← Összes projekt",
         "close": "Bezárás",
@@ -237,7 +218,6 @@ def build(lang: str) -> None:
             f'<img src="{img}{stem}-sm.jpg" alt="{caps[i]}" loading="lazy"></a><figcaption>{caps[i]}</figcaption></figure>'
             for stem, *caps in photos)
     gallery = grid(PHOTOS)
-    student_gallery = grid(STUDENT_PHOTOS)
     body = f"""    <a class="back" href="./#projects">{t["back"]}</a>
     <section class="case-head">
       <h1>{t["h1"]}</h1>
@@ -253,11 +233,6 @@ def build(lang: str) -> None:
       <h2>{t["photos"]}</h2>
       <div class="photo-grid">
 {gallery}
-      </div>
-      <h3>{t["student_photos"]}</h3>
-      <p class="note">{t["student_note"]}</p>
-      <div class="photo-grid">
-{student_gallery}
       </div>
     </article>"""
     popover = f"""
