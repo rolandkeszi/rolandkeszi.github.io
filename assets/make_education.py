@@ -33,7 +33,7 @@ DEGREES = [
                    "Kiállító: Budapesti Közgazdaságtudományi és Államigazgatási Egyetem, ma Budapesti Corvinus Egyetem"),
     },
     {
-        "year": "1998", "logo": ("elte-tatk-en.svg", "elte-tatk-hu.svg"),
+        "year": "1998", "logo": ("elte-tatk-en-white.svg", "elte-tatk-hu-white.svg"), "tile": "tatk",
         "school": ("ELTE - Faculty of Social Sciences", "ELTE - Társadalomtudományi Kar"),
         "degree": ("Master's degree in Sociology", "Egyetemi mesterdiploma, szociológia"),
         "detail": ("Specialisations: research sociology; change management",
@@ -64,7 +64,7 @@ def build(lang: str) -> None:
         logo = d["logo"] if isinstance(d["logo"], str) else d["logo"][i]
         items.append(
             f'      <article class="edu-item">\n'
-            f'        <span class="logo-tile"><img src="{prefix}assets/img/logos/{logo}" alt="{html.escape(d["school"][i])} logo"></span>\n'
+            f'        <span class="logo-tile{(" " + d["tile"]) if d.get("tile") else ""}"><img src="{prefix}assets/img/logos/{logo}" alt="{html.escape(d["school"][i])} logo"></span>\n'
             f'        <div class="edu-text"><span class="badge">{d["year"]}</span>'
             f'<h2>{html.escape(d["degree"][i])}</h2>'
             f'<p class="edu-school">{html.escape(d["school"][i])}</p>'
