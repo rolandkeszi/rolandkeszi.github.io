@@ -20,14 +20,14 @@ DEGREES = [
     },
     {
         "year": "2006", "logo": "elte.png",
-        "school": ("ELTE University", "Eötvös Loránd Tudományegyetem (ELTE)"),
+        "school": ("ELTE University - Faculty of Social Sciences", "ELTE - Társadalomtudományi Kar"),
         "degree": ("PhD in Sociology", "Doktori (PhD) fokozat, szociológia"),
         "detail": ("Sociological sciences, quantitative empirical sociology",
                    "Szociológiai tudományok, kvantitatív empirikus szociológia"),
     },
     {
         "year": "2003", "logo": "corvinus.svg",
-        "school": ("Corvinus University", "Budapesti Corvinus Egyetem"),
+        "school": ("Corvinus University - Corvinus Business School", "Budapesti Corvinus Egyetem - Corvinus Business School"),
         "degree": ("Master of Business Administration (MBA)", "Master of Business Administration (MBA)"),
         "detail": ("Awarded by the Budapest University of Economic Sciences and Public Administration, now Corvinus University of Budapest",
                    "Kiállító: Budapesti Közgazdaságtudományi és Államigazgatási Egyetem, ma Budapesti Corvinus Egyetem"),
@@ -44,12 +44,12 @@ DEGREES = [
 TEXT = {
     "en": {
         "title": "Education · Roland Keszi",
-        "description": "University degrees of Roland Keszi: artificial intelligence specialist engineer programme (University of Pannonia - Faculty of Engineering), PhD and master's degree in sociology (ELTE University), MBA (Corvinus University).",
+        "description": "University degrees of Roland Keszi: artificial intelligence specialist engineer programme (University of Pannonia - Faculty of Engineering), PhD and master's degree in sociology (ELTE University), MBA (Corvinus University - Corvinus Business School).",
         "h1": "Education",
     },
     "hu": {
         "title": "Végzettség · Keszi Roland",
-        "description": "Keszi Roland egyetemi végzettségei: mesterséges intelligencia szakmérnök képzés (Pannon Egyetem - Mérnöki Kar), szociológia PhD és egyetemi oklevél (ELTE), MBA (Budapesti Corvinus Egyetem).",
+        "description": "Keszi Roland egyetemi végzettségei: mesterséges intelligencia szakmérnök képzés (Pannon Egyetem - Mérnöki Kar), szociológia PhD és egyetemi oklevél (ELTE), MBA (Budapesti Corvinus Egyetem - Corvinus Business School).",
         "h1": "Végzettség",
     },
 }
