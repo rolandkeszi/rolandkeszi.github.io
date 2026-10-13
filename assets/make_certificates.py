@@ -203,7 +203,11 @@ TEXT = {
         "title": "Certificates · Roland Keszi",
         "description": "Professional certificates of Roland Keszi in data analytics, machine learning and AI from Google, IBM, Microsoft, Stanford University, DeepLearning.AI and others.",
         "h1": "Certificates",
-        "lede": "Professional certificates in data analytics, machine learning and AI. Click a certificate to enlarge it; the title links to the issuer's verification page.",
+        "intro": [
+            "I regard <strong>learning</strong>, and a lasting commitment to self-development, as a priority in every area of my life. In technology, and in AI in particular, I consider it indispensable.",
+            "Below are some of my most important training programmes in artificial intelligence and data science.",
+        ],
+        "hint": "Click a certificate to enlarge it; the title links to the issuer's verification page.",
         "linkedin": "All certificates on LinkedIn",
         "courses": "courses", "course": "Course", "included": "Courses in this programme",
         "count": ("certificate", "certificates"),
@@ -215,7 +219,11 @@ TEXT = {
         "title": "Tanúsítványok · Keszi Roland",
         "description": "Keszi Roland adatelemzési, gépi tanulási és MI-tanúsítványai a Google-tól, az IBM-től, a Microsofttól, a Stanford Egyetemtől, a DeepLearning.AI-tól és másoktól.",
         "h1": "Tanúsítványok",
-        "lede": "Szakmai tanúsítványaim adatelemzés, gépi tanulás és mesterséges intelligencia témában. A képre kattintva a tanúsítvány nagyobb méretben nyílik meg, a cím a kiállító hitelesítő oldalára mutat.",
+        "intro": [
+            "Életem minden területén kiemelt jelentőségűként tekintek a <strong>tanulás</strong>, az állandó önképzés fenntartására, melyet a technológiai, illetve AI vonatkozású tevékenységekben elengedhetetlennek gondolok.",
+            "Az alábbiakban a mesterséges intelligencia, illetve data science vonatkozású néhány fontosabb továbbképzésemet tüntetem fel.",
+        ],
+        "hint": "A képre kattintva a tanúsítvány nagyobb méretben nyílik meg, a cím a kiállító hitelesítő oldalára mutat.",
         "linkedin": "Összes tanúsítvány a LinkedIn-en",
         "courses": "kurzus", "course": "Kurzus", "included": "A program kurzusai",
         "count": ("tanúsítvány", "tanúsítvány"),
@@ -309,6 +317,8 @@ def build(lang: str) -> None:
             f'    </section>'
         )
 
+    intro = "\n".join(f'      <p class="lede">{para}</p>' for para in t["intro"])
+
     out = f"""<!doctype html>
 <html lang="{lang}">
 <head>
@@ -334,7 +344,8 @@ def build(lang: str) -> None:
 
     <section class="case-head cert-head">
       <h1>{t["h1"]}</h1>
-      <p class="lede">{t["lede"]}</p>
+{intro}
+      <p class="cert-hint">{t["hint"]}</p>
       <a class="linkedin-all" href="{LINKEDIN}" target="_blank" rel="noopener">{t["linkedin"]} ↗</a>
     </section>
 

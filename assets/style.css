@@ -161,6 +161,8 @@ tr.chosen td { color: var(--text); font-weight: 600; }
 /* certificates */
 .top nav a[aria-current="page"] { color: var(--text); }
 .cert-head { border-bottom: 0; padding-bottom: 12px; }
+.cert-head .lede strong { color: var(--text); font-weight: 600; }
+.cert-hint { font-size: 14px; color: var(--muted); margin: 6px 0 10px; }
 .linkedin-all { display: inline-block; font-size: 15px; font-weight: 500; }
 .cert-group { padding: 40px 0 12px; border-top: 1px solid var(--line); margin-top: 28px; }
 .cert-issuer { display: flex; align-items: center; gap: 18px; margin: 0 0 28px; }
