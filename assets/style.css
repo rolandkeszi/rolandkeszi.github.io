@@ -286,3 +286,11 @@ details.refs { margin: 28px 0 8px; font-size: 14px; color: var(--muted); }
 details.refs summary { cursor: pointer; color: var(--text); font-weight: 500; }
 details.refs ol { padding-left: 20px; margin: 12px 0 0; }
 details.refs li { margin: 0 0 8px; color: var(--text-2); overflow-wrap: anywhere; }
+.globe-row { display: flex; align-items: center; gap: 24px; margin: 8px 0 4px; }
+.globe-row p { margin: 0; }
+.globe { flex: none; width: 150px; height: 150px; border-radius: 50%; overflow: hidden; box-shadow: 0 6px 24px rgba(15, 30, 80, .25); }
+.globe img { width: 100%; height: 100%; object-fit: cover; padding: 0; border: 0; border-radius: 0; }
+@media (max-width: 680px) {
+  .globe-row { flex-direction: column; align-items: center; text-align: left; gap: 16px; }
+  .globe { width: 130px; height: 130px; }
+}

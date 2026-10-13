@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/style.css?v=22">
+  <link rel="stylesheet" href="assets/style.css?v=23">
 </head>
 <body>
   <header class="top"><div class="top-inner"><a class="name" href="./">Roland Keszi<span class="tagline">Artificial Intelligence &amp;<br>Data Science Portfolio</span></a>
@@ -44,9 +44,9 @@
       <h3>What dysarthria is</h3>
       <p>Dysarthria is a <strong>motor speech disorder of neurological origin</strong>. It is not a language or cognitive problem but a disorder in carrying out the movements of speech: articulation becomes imprecise and slurred, the tempo slow, halting or irregular, and listeners find the speech much harder to understand. It commonly accompanies stroke, Parkinson's disease, cerebral palsy, and ALS and other neurodegenerative conditions.</p>
       <h3>How many people are affected</h3>
-      <p>I estimated the number from the global prevalence of the underlying conditions and the share of patients who develop dysarthria:</p>
+      <div class="globe-row"><picture class="globe"><source srcset="assets/img/workshop/globe.webp" type="image/webp" media="(prefers-reduced-motion: no-preference)"><img src="assets/img/workshop/globe-still.jpg" alt="Rotating globe" width="320" height="320" loading="lazy"></picture><p>I estimated the number from the global prevalence of the underlying conditions and the share of patients who develop dysarthria. Together, <strong>tens of millions of people live with dysarthria worldwide</strong>.</p></div>
       <div class="table-scroll"><table><thead><tr><th>Underlying condition</th><th class="num">People worldwide</th><th>Share with dysarthria</th></tr></thead><tbody><tr><td>Parkinson's disease</td><td class="num">11.7 million</td><td>about 90% over the course of the disease</td></tr><tr><td>Stroke survivors</td><td class="num">over 100 million</td><td>24–50%</td></tr><tr><td>Cerebral palsy</td><td class="num">17 million</td><td>about 78%, persistent</td></tr><tr><td>ALS</td><td class="num">223,000</td><td>about 70% over the course of the disease</td></tr></tbody></table></div>
-      <p>Together, <strong>tens of millions of people live with dysarthria worldwide</strong>. The sources use different methods, so the rates are not strictly comparable.</p>
+      <p>The sources use different methods, so the rates are not strictly comparable.</p>
       <h3>Why this is hard for speech recognition</h3>
       <ul><li><strong>Imprecise articulation:</strong> speech sounds do not follow the usual patterns.</li><li><strong>Large individual variability:</strong> two people with dysarthria can sound very different from each other.</li><li><strong>Data scarcity:</strong> few public, annotated dysarthric recordings are available for training.</li></ul>
       <p>Commercial speech recognition systems typically reach a word error rate (WER) below 5% on typical speech. For dysarthric speech the error rate is many times higher: in the talk I illustrated it with about 45%, although the value varies widely with severity and corpus.</p>
