@@ -33,7 +33,7 @@ DEGREES = [
                    "Kiállító: Budapesti Közgazdaságtudományi és Államigazgatási Egyetem, ma Budapesti Corvinus Egyetem"),
     },
     {
-        "year": "1998", "logo": ("elte-tatk-en-white.svg", "elte-tatk-hu-white.svg"), "tile": "tatk",
+        "year": "1998", "logo": ("elte-tatk-en.svg", "elte-tatk-hu.svg"),
         "school": ("ELTE - Faculty of Social Sciences", "ELTE - Társadalomtudományi Kar"),
         "degree": ("Master's degree in Sociology", "Egyetemi mesterdiploma, szociológia"),
         "detail": ("Specialisations: research sociology; change management",
