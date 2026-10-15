@@ -57,7 +57,7 @@ def build(lang: str) -> None:
     scholar_logo = f"{prefix}assets/img/logos/google-scholar.svg"
     scholar = banner(
         "scholar", f"https://scholar.google.com/citations?user={SCHOLAR_ID}&hl={lang}",
-        scholar_logo, f"Google {t['scholar_name']}", t["scholar"], t,
+        "", f"Google {t['scholar_name']}", t["scholar"], t,
         f'        <img class="pub-deco" src="{scholar_logo}" alt="" aria-hidden="true">\n',
         f'<span class="pub-wordmark"><img src="{prefix}assets/img/logos/google.svg" alt="Google" width="118" height="40">'
         f'<span>{t["scholar_name"]}</span></span>',
