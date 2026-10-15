@@ -325,6 +325,7 @@ footer a { color: var(--link); }
 .pub-mtmt .pub-cta { border-color: #bfe5dc; background: #fff; color: #12806f; }
 .pub-mtmt:hover .pub-cta { border-color: #18ae9a; background: #18ae9a; color: #fff; }
 .pub-mtmt .pub-deco-text { color: #fff; opacity: .3; }
+.pub-mtmt-word { display: block; font-size: 25px; font-weight: 500; line-height: 1.3; letter-spacing: .05em; color: #1c2939; padding-bottom: 2px; }
 .pub-wordmark { display: inline-flex; align-items: baseline; gap: .3em; font-weight: 400; letter-spacing: -.01em; color: #5f6368; }
 .pub-wordmark img { width: auto; height: 40px; margin-bottom: -10px; }
 @media (max-width: 680px) {
@@ -333,6 +334,7 @@ footer a { color: var(--link); }
   .pub-logo img { width: 54px; height: 54px; }
   .pub-name { font-size: 28px; }
   .pub-wordmark img { height: 33px; margin-bottom: -8px; }
+  .pub-mtmt-word { font-size: 21px; }
   .pub-desc { font-size: 16px; }
   .pub-deco { width: 200px; height: 200px; right: -40px; bottom: -50px; }
   .pub-deco-text { width: auto; height: auto; font-size: 110px; }

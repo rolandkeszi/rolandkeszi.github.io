@@ -19,7 +19,7 @@ TEXT = {
         "cta": "Open the list",
         "scholar_name": "Scholar",
         "scholar": "Publications, citations and h-index",
-        "mtmt_name": "MTMT",
+        "mtmt_name": "Magyar Tudományos Művek Tára (MTMT)",
         "mtmt": "Data verified by the Hungarian Academy of Sciences",
         "new_window": "opens in a new window",
     },
@@ -31,7 +31,7 @@ TEXT = {
         "cta": "A lista megnyitása",
         "scholar_name": "Tudós",
         "scholar": "Publikációk, hivatkozások és h-index",
-        "mtmt_name": "MTMT",
+        "mtmt_name": "Magyar Tudományos Művek Tára (MTMT)",
         "mtmt": "A Magyar Tudományos Akadémia által hitelesített adatok",
         "new_window": "új ablakban nyílik meg",
     },
@@ -66,6 +66,7 @@ def build(lang: str) -> None:
         "mtmt", f"https://m2.mtmt.hu/gui2/?type=authors&mode=browse&sel={MTMT_ID}&view=simpleList",
         f"{prefix}assets/img/logos/mtmt.svg", t["mtmt_name"], t["mtmt"], t,
         '        <span class="pub-deco pub-deco-text" aria-hidden="true">mt<br>mt</span>\n',
+        '<span class="pub-mtmt-word" lang="hu">Magyar Tudományos<br>Művek Tára</span>',
     )
     body = f"""    <section class="case-head cert-head">
       <h1>{t["h1"]}</h1>
