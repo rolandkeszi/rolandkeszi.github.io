@@ -20,7 +20,7 @@ TEXT = {
         "scholar_name": "Scholar",
         "scholar": "Publications, citations and h-index",
         "mtmt_name": "MTMT",
-        "mtmt": "Hungarian Scientific Bibliography: the complete, verified publication list",
+        "mtmt": "Data verified by the Hungarian Academy of Sciences",
         "new_window": "opens in a new window",
     },
     "hu": {
@@ -32,7 +32,7 @@ TEXT = {
         "scholar_name": "Tudós",
         "scholar": "Publikációk, hivatkozások és h-index",
         "mtmt_name": "MTMT",
-        "mtmt": "Magyar Tudományos Művek Tára: a teljes, hitelesített publikációs lista",
+        "mtmt": "A Magyar Tudományos Akadémia által hitelesített adatok",
         "new_window": "új ablakban nyílik meg",
     },
 }

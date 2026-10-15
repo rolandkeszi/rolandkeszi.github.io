@@ -305,7 +305,7 @@ footer a { color: var(--link); }
 .pub-banner:hover { text-decoration: none; transform: translateY(-3px); box-shadow: 0 2px 4px rgba(0, 0, 0, .08), 0 22px 44px -16px rgba(10, 20, 40, .55); }
 .pub-banner:focus-visible { outline: 3px solid var(--link); outline-offset: 3px; }
 .pub-scholar { color: #202124; border: 1px solid #d9e4f7; background: radial-gradient(circle at 92% 8%, rgba(66, 133, 244, .2) 0, transparent 44%), radial-gradient(circle at 75% 125%, rgba(160, 195, 255, .5) 0, transparent 52%), linear-gradient(135deg, #ffffff 0%, #f3f7ff 55%, #e4eeff 100%); }
-.pub-mtmt { background: radial-gradient(circle at 90% 90%, rgba(24, 174, 154, .6) 0, transparent 50%), linear-gradient(135deg, #0d1520 0%, #1c2939 55%, #1d3d45 100%); }
+.pub-mtmt { color: #1c2939; border: 1px solid #cdebe4; background: radial-gradient(circle at 92% 92%, rgba(24, 174, 154, .2) 0, transparent 46%), radial-gradient(circle at 75% -25%, rgba(150, 220, 205, .5) 0, transparent 52%), linear-gradient(135deg, #ffffff 0%, #f1faf7 55%, #dff4ee 100%); }
 .pub-logo { flex: none; display: grid; place-items: center; width: 116px; height: 116px; border-radius: 26px; background: #fff; box-shadow: 0 10px 26px -10px rgba(0, 0, 0, .45); }
 .pub-logo img { width: 72px; height: 72px; }
 .pub-text { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
@@ -320,6 +320,11 @@ footer a { color: var(--link); }
 .pub-scholar .pub-cta { border-color: #c6d7f7; background: #fff; color: #1a56c4; }
 .pub-scholar:hover .pub-cta { border-color: #4285f4; background: #4285f4; color: #fff; }
 .pub-scholar .pub-deco { opacity: .1; }
+.pub-mtmt .pub-logo { border: 1px solid #e0eeea; box-shadow: 0 10px 26px -12px rgba(18, 120, 105, .35); }
+.pub-mtmt .pub-desc { color: #5f6368; opacity: 1; }
+.pub-mtmt .pub-cta { border-color: #bfe5dc; background: #fff; color: #12806f; }
+.pub-mtmt:hover .pub-cta { border-color: #18ae9a; background: #18ae9a; color: #fff; }
+.pub-mtmt .pub-deco-text { opacity: .12; }
 .pub-wordmark { display: inline-flex; align-items: baseline; gap: .3em; font-weight: 400; letter-spacing: -.01em; color: #5f6368; }
 .pub-wordmark img { width: auto; height: 40px; margin-bottom: -10px; }
 @media (max-width: 680px) {
