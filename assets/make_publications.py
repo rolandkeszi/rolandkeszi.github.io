@@ -66,7 +66,8 @@ def build(lang: str) -> None:
         "mtmt", f"https://m2.mtmt.hu/gui2/?type=authors&mode=browse&sel={MTMT_ID}&view=simpleList",
         f"{prefix}assets/img/logos/mtmt.svg", t["mtmt_name"], t["mtmt"], t,
         '        <span class="pub-deco pub-deco-text" aria-hidden="true">mt<br>mt</span>\n',
-        '<span class="pub-mtmt-word" lang="hu">Magyar Tudományos<br>Művek Tára</span>',
+        f'<span class="pub-mtmt-word" lang="hu"><img src="{prefix}assets/img/logos/mtmt.svg" alt="MTMT" width="52" height="52">'
+        '<span>Magyar Tudományos<br>Művek Tára</span></span>',
     )
     body = f"""    <section class="case-head cert-head">
       <h1>{t["h1"]}</h1>
