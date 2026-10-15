@@ -17,6 +17,7 @@ TEXT = {
         "h1": "Publications",
         "lede": "My publications are listed in two databases. Click a banner to open the full, up-to-date list in a new window.",
         "cta": "Open the list",
+        "scholar_name": "Scholar",
         "scholar": "Publications, citations and h-index",
         "mtmt_name": "MTMT",
         "mtmt": "Hungarian Scientific Bibliography: the complete, verified publication list",
@@ -28,6 +29,7 @@ TEXT = {
         "h1": "Publikációk",
         "lede": "Publikációim két adatbázisban érhetők el. A bannerre kattintva új ablakban nyílik meg a teljes, naprakész lista.",
         "cta": "A lista megnyitása",
+        "scholar_name": "Tudós",
         "scholar": "Publikációk, hivatkozások és h-index",
         "mtmt_name": "MTMT",
         "mtmt": "Magyar Tudományos Művek Tára: a teljes, hitelesített publikációs lista",
@@ -36,12 +38,12 @@ TEXT = {
 }
 
 
-def banner(kind: str, href: str, logo: str, name: str, desc: str, t: dict, deco: str = "") -> str:
+def banner(kind: str, href: str, logo: str, name: str, desc: str, t: dict, deco: str = "", name_html: str = "") -> str:
     return (
         f'      <a class="pub-banner pub-{kind}" href="{href}" target="_blank" rel="noopener" '
         f'aria-label="{name}: {desc} ({t["new_window"]})">\n'
         f'        <span class="pub-logo"><img src="{logo}" alt="" width="72" height="72"></span>\n'
-        f'        <span class="pub-text"><span class="pub-name">{name}</span>'
+        f'        <span class="pub-text"><span class="pub-name">{name_html or name}</span>'
         f'<span class="pub-desc">{desc}</span>'
         f'<span class="pub-cta">{t["cta"]} ↗</span></span>\n'
         f'{deco}'
@@ -55,8 +57,10 @@ def build(lang: str) -> None:
     scholar_logo = f"{prefix}assets/img/logos/google-scholar.svg"
     scholar = banner(
         "scholar", f"https://scholar.google.com/citations?user={SCHOLAR_ID}&hl={lang}",
-        scholar_logo, "Google Scholar", t["scholar"], t,
+        scholar_logo, f"Google {t['scholar_name']}", t["scholar"], t,
         f'        <img class="pub-deco" src="{scholar_logo}" alt="" aria-hidden="true">\n',
+        f'<span class="pub-wordmark"><img src="{prefix}assets/img/logos/google.svg" alt="Google" width="118" height="40">'
+        f'<span>{t["scholar_name"]}</span></span>',
     )
     mtmt = banner(
         "mtmt", f"https://m2.mtmt.hu/gui2/?type=authors&mode=browse&sel={MTMT_ID}&view=simpleList",
