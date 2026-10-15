@@ -42,8 +42,8 @@ def banner(kind: str, href: str, logo: str, name: str, desc: str, t: dict, deco:
     return (
         f'      <a class="pub-banner pub-{kind}" href="{href}" target="_blank" rel="noopener" '
         f'aria-label="{name}: {desc} ({t["new_window"]})">\n'
-        f'        <span class="pub-logo"><img src="{logo}" alt="" width="72" height="72"></span>\n'
-        f'        <span class="pub-text"><span class="pub-name">{name_html or name}</span>'
+        + (f'        <span class="pub-logo"><img src="{logo}" alt="" width="72" height="72"></span>\n' if logo else '')
+        + f'        <span class="pub-text"><span class="pub-name">{name_html or name}</span>'
         f'<span class="pub-desc">{desc}</span>'
         f'<span class="pub-cta">{t["cta"]} ↗</span></span>\n'
         f'{deco}'
@@ -64,7 +64,7 @@ def build(lang: str) -> None:
     )
     mtmt = banner(
         "mtmt", f"https://m2.mtmt.hu/gui2/?type=authors&mode=browse&sel={MTMT_ID}&view=simpleList",
-        f"{prefix}assets/img/logos/mtmt.svg", t["mtmt_name"], t["mtmt"], t,
+        "", t["mtmt_name"], t["mtmt"], t,
         '        <span class="pub-deco pub-deco-text" aria-hidden="true">mt<br>mt</span>\n',
         f'<span class="pub-mtmt-word" lang="hu"><img src="{prefix}assets/img/logos/mtmt.svg" alt="MTMT" width="52" height="52">'
         '<span>Magyar Tudományos<br>Művek Tára</span></span>',
