@@ -298,3 +298,29 @@ details.refs li { margin: 0 0 8px; color: var(--text-2); overflow-wrap: anywhere
 }
 .about-pop .about-more { margin-top: 10px; font-size: 14px; }
 footer a { color: var(--link); }
+
+/* publications */
+.pub-banners { display: grid; gap: 24px; margin: 8px 0 64px; }
+.pub-banner { position: relative; overflow: hidden; isolation: isolate; display: flex; align-items: center; gap: 32px; min-height: 210px; padding: 36px 40px; border-radius: 22px; color: #fff; box-shadow: 0 1px 2px rgba(0, 0, 0, .06), 0 14px 34px -14px rgba(10, 20, 40, .45); transition: transform .2s ease, box-shadow .2s ease; }
+.pub-banner:hover { text-decoration: none; transform: translateY(-3px); box-shadow: 0 2px 4px rgba(0, 0, 0, .08), 0 22px 44px -16px rgba(10, 20, 40, .55); }
+.pub-banner:focus-visible { outline: 3px solid var(--link); outline-offset: 3px; }
+.pub-scholar { background: radial-gradient(circle at 88% 12%, rgba(160, 195, 255, .55) 0, transparent 46%), linear-gradient(135deg, #174ea6 0%, #356ac3 45%, #4285f4 100%); }
+.pub-mtmt { background: radial-gradient(circle at 90% 90%, rgba(24, 174, 154, .6) 0, transparent 50%), linear-gradient(135deg, #0d1520 0%, #1c2939 55%, #1d3d45 100%); }
+.pub-logo { flex: none; display: grid; place-items: center; width: 116px; height: 116px; border-radius: 26px; background: #fff; box-shadow: 0 10px 26px -10px rgba(0, 0, 0, .45); }
+.pub-logo img { width: 72px; height: 72px; }
+.pub-text { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.pub-name { font-size: 34px; font-weight: 700; letter-spacing: -.02em; line-height: 1.15; }
+.pub-desc { font-size: 17px; line-height: 1.45; opacity: .9; max-width: 440px; }
+.pub-cta { align-self: flex-start; margin-top: 16px; padding: 7px 16px; border: 1px solid rgba(255, 255, 255, .4); border-radius: 999px; background: rgba(255, 255, 255, .14); font-size: 15px; font-weight: 600; transition: background .2s ease, color .2s ease; }
+.pub-banner:hover .pub-cta { background: #fff; color: #1d1d1f; }
+.pub-deco { position: absolute; z-index: -1; right: -36px; bottom: -70px; width: 280px; height: 280px; opacity: .16; pointer-events: none; }
+.pub-deco-text { width: auto; height: auto; right: -10px; bottom: -58px; font-size: 150px; font-weight: 600; line-height: .82; letter-spacing: -.04em; color: #18ae9a; opacity: .22; }
+@media (max-width: 680px) {
+  .pub-banner { flex-direction: column; align-items: flex-start; gap: 20px; min-height: 0; padding: 28px 24px; }
+  .pub-logo { width: 84px; height: 84px; border-radius: 20px; }
+  .pub-logo img { width: 54px; height: 54px; }
+  .pub-name { font-size: 28px; }
+  .pub-desc { font-size: 16px; }
+  .pub-deco { width: 200px; height: 200px; right: -40px; bottom: -50px; }
+  .pub-deco-text { width: auto; height: auto; font-size: 110px; }
+}
