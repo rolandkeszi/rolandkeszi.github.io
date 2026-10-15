@@ -24,6 +24,9 @@ DEGREES = [
         "degree": ("PhD in Sociology", "Doktori (PhD) fokozat, szociológia"),
         "detail": ("Sociological sciences, quantitative empirical sociology",
                    "Szociológiai tudományok, kvantitatív empirikus szociológia"),
+        "thesis": ("dissertation",
+                   "Factors determining the organisational introduction of telework in the micro, small and medium-sized enterprise sector - An organisational sociology model experiment based on a quantitative study of companies in five European regions",
+                   "A távmunkavégzés munkaszervezeti bevezetését meghatározó tényezők a mikro-, kis- és középvállalati szektorban - Szervezetszociológiai modellkísérlet öt európai régió vállalatának kvantitatív vizsgálatával"),
     },
     {
         "year": "2003", "number": "MBA(m)-032/2003", "logo": "corvinus.svg",
@@ -31,6 +34,9 @@ DEGREES = [
         "degree": ("Master of Business Administration (MBA)", "Master of Business Administration (MBA)"),
         "detail": ("Awarded by the Budapest University of Economic Sciences and Public Administration, now Corvinus University of Budapest",
                    "Kiállító: Budapesti Közgazdaságtudományi és Államigazgatási Egyetem, ma Budapesti Corvinus Egyetem"),
+        "thesis": ("thesis",
+                   'Behavioural organisational diagnostics - Examining the stages of resistance to change: Lessons from the reorganisation of "X" Ltd.',
+                   'Magatartástudományi szervezetdiagnosztika - A változással szembeni ellenállás stádiumainak vizsgálata: Az "X" Kft szervezeti átalakításának tapasztalatai'),
     },
     {
         "year": "1998", "number": "44/1998", "logo": ("elte-tatk-en.svg", "elte-tatk-hu.svg"),
@@ -47,14 +53,28 @@ TEXT = {
         "description": "University degrees of Roland Keszi: artificial intelligence specialist engineer programme (University of Pannonia - Faculty of Engineering), PhD in sociology (Eötvös Loránd University - Faculty of Social Sciences), master's degree in sociology (ELTE - Faculty of Social Sciences), MBA (Corvinus University - Corvinus Business School).",
         "h1": "Education",
         "number": "Diploma no.",
+        "dissertation": "Dissertation",
+        "thesis": "Thesis",
+        "translated": "translated from Hungarian",
     },
     "hu": {
         "title": "Végzettség · Keszi Roland",
         "description": "Keszi Roland egyetemi végzettségei: mesterséges intelligencia szakmérnök képzés (Pannon Egyetem - Mérnöki Kar), szociológia PhD (Eötvös Loránd Tudományegyetem - Társadalomtudományi Kar) és egyetemi mesterdiploma (ELTE - Társadalomtudományi Kar), MBA (Budapesti Corvinus Egyetem - Corvinus Business School).",
         "h1": "Végzettség",
         "number": "Oklevélszám",
+        "dissertation": "Disszertáció",
+        "thesis": "Szakdolgozat",
+        "translated": "",
     },
 }
+
+
+def thesis_html(d: dict, t: dict, i: int) -> str:
+    if not d.get("thesis"):
+        return ""
+    kind, *titles = d["thesis"]
+    note = f' <span class="edu-note">({t["translated"]})</span>' if t["translated"] else ""
+    return f'<p class="cert-meta edu-thesis">{t[kind]}: <em>{html.escape(titles[i])}</em>{note}</p>'
 
 
 def build(lang: str) -> None:
@@ -71,6 +91,7 @@ def build(lang: str) -> None:
             f'<h2>{html.escape(d["degree"][i])}</h2>'
             f'<p class="edu-school">{html.escape(d["school"][i])}</p>'
             f'<p class="cert-meta">{d["detail"][i]}</p>'
+            f'{thesis_html(d, t, i)}'
             f'<p class="cert-meta edu-no">{t["number"]}: <span>{html.escape(d["number"])}</span></p></div>\n'
             f'      </article>'
         )
