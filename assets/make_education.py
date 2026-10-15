@@ -39,7 +39,7 @@ DEGREES = [
                    'Magatartástudományi szervezetdiagnosztika - A változással szembeni ellenállás stádiumainak vizsgálata: Az "X" Kft szervezeti átalakításának tapasztalatai'),
     },
     {
-        "year": "1998", "number": "441998", "logo": ("elte-tatk-en.svg", "elte-tatk-hu.svg"),
+        "year": "1998", "number": "ELTE SZITK-441998", "logo": ("elte-tatk-en.svg", "elte-tatk-hu.svg"),
         "school": ("ELTE - Faculty of Social Sciences", "ELTE - Társadalomtudományi Kar"),
         "degree": ("Master's degree in Sociology", "Egyetemi mesterdiploma, szociológia"),
         "detail": ("Specialisations: research sociology; change management",
