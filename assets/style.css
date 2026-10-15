@@ -41,7 +41,7 @@ a:hover { text-decoration: underline; }
 .top-inner { max-width: 1100px; margin: 0 auto; padding: 6px 24px 0; display: flex; justify-content: space-between; align-items: center; }
 .about-btn { font: inherit; color: var(--muted); background: none; border: 0; padding: 0; cursor: pointer; }
 .about-btn:hover { color: var(--text); }
-.about-pop { position: fixed; inset: auto; top: 112px; right: max(16px, calc(50vw - 526px)); margin: 0; max-width: min(380px, calc(100vw - 32px)); padding: 18px 20px; border: 1px solid var(--line); border-radius: 12px; background: var(--bg); color: var(--text-2); font-size: 15px; line-height: 1.6; box-shadow: 0 12px 40px rgba(0, 0, 0, .16); }
+.about-pop { position: fixed; inset: auto; top: 124px; right: max(16px, calc(50vw - 526px)); margin: 0; max-width: min(380px, calc(100vw - 32px)); padding: 18px 20px; border: 1px solid var(--line); border-radius: 12px; background: var(--bg); color: var(--text-2); font-size: 15px; line-height: 1.6; box-shadow: 0 12px 40px rgba(0, 0, 0, .16); }
 .about-pop p { margin: 0; }
 .top .name { color: var(--text); font-weight: 600; font-size: 18px; white-space: nowrap; }
 .top .name { display: inline-flex; flex-direction: column; line-height: 1.25; }
@@ -57,12 +57,12 @@ a:hover { text-decoration: underline; }
 .top nav .lang a:hover, .top nav .lang a.active { opacity: 1; }
 .lang svg { width: 22px; height: 15px; border-radius: 2px; box-shadow: 0 0 0 1px var(--line); }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-[id] { scroll-margin-top: 120px; }
+[id] { scroll-margin-top: 132px; }
 .lang-note { font-size: 14px; color: var(--muted); margin: 0; }
 
 .intro { padding: 72px 0 56px; border-bottom: 1px solid var(--line); }
-.top nav .head-avatar { margin-left: 20px; display: inline-flex; }
-.head-avatar img { width: 92px; height: 92px; border-radius: 50%; object-fit: cover; border: 1px solid var(--line); }
+.top nav .head-avatar { margin-left: 20px; display: inline-flex; flex: none; }
+.head-avatar img { width: 108px; height: 108px; border-radius: 50%; object-fit: cover; border: 1px solid var(--line); }
 .intro h1 { font-size: 44px; line-height: 1.1; letter-spacing: -.025em; font-weight: 700; margin: 0 0 8px; }
 .intro .role { font-size: 20px; color: var(--muted); margin: 0 0 28px; }
 .intro p { color: var(--text-2); margin: 0 0 14px; max-width: 640px; }
@@ -198,11 +198,18 @@ tr.chosen td { color: var(--text); font-weight: 600; }
   .logo-tile.square img { height: 46px; }
 }
 
-/* site menu: inline on wide screens, a dropdown behind the menu button below 900px */
+/* tighter inline header just above the menu-button breakpoint, so the Hungarian labels fit */
+@media (max-width: 1080px) and (min-width: 961px) {
+  .top nav a { margin-left: 12px; }
+  .top nav .head-avatar { margin-left: 14px; }
+  .head-avatar img { width: 92px; height: 92px; }
+}
+
+/* site menu: inline on wide screens, a dropdown behind the menu button below 960px */
 .menu-btn { display: none; }
 .menu { display: flex; align-items: center; position: static; inset: auto; width: auto; height: auto; margin: 0; border: 0; padding: 0; overflow: visible; background: none; color: inherit; }
-@media (max-width: 900px) {
-  .top-inner { position: relative; flex-wrap: wrap; justify-content: flex-start; align-content: center; column-gap: 16px; row-gap: 8px; min-height: 98px; padding: 6px 130px 0 24px; }
+@media (max-width: 960px) {
+  .top-inner { position: relative; flex-wrap: wrap; justify-content: flex-start; align-content: center; column-gap: 16px; row-gap: 8px; min-height: 114px; padding: 6px 146px 0 24px; }
   .top nav { display: contents; }
   .top .name { order: 1; }
   .menu-btn { order: 5; margin-left: auto; display: inline-flex; align-items: center; gap: 6px; font: inherit; font-size: 15px; color: var(--text); background: none; border: 1px solid var(--line); border-radius: 8px; padding: 4px 11px 4px 8px; cursor: pointer; }
@@ -220,27 +227,29 @@ tr.chosen td { color: var(--text); font-weight: 600; }
 @media (max-width: 680px) {
   .top { font-size: 14px; }
   .tagline { font-size: 12px; }
-  .top-inner { min-height: 70px; padding: 6px 94px 0 16px; column-gap: 14px; row-gap: 6px; }
+  .top-inner { min-height: 82px; padding: 6px 104px 0 16px; column-gap: 14px; row-gap: 6px; }
   .top .name { font-size: 16px; }
   .top nav .head-avatar { right: 16px; }
-  .head-avatar img { width: 64px; height: 64px; }
+  .head-avatar img { width: 76px; height: 76px; }
   .lang { gap: 6px; }
   .lang svg { width: 20px; height: 14px; }
   .menu { top: 98px; }
   .about-pop { top: 100px; }
 }
 @media (max-width: 420px) {
-  .top-inner { min-height: 64px; padding-right: 84px; column-gap: 12px; }
+  .top-inner { min-height: 74px; padding-right: 94px; column-gap: 12px; }
   .top .name { font-size: 15px; }
   .top nav a.icon svg { width: 19px; height: 19px; }
   .lang svg { width: 18px; height: 12px; }
-  .head-avatar img { width: 58px; height: 58px; }
+  .head-avatar img { width: 68px; height: 68px; }
   .menu { top: 92px; }
 }
 @media (max-width: 360px) {
   .logo-tile img { max-width: 105px; }
   .top .name { font-size: 14px; }
   .menu-btn { padding: 3px 8px 3px 6px; font-size: 14px; }
+  .top-inner { padding-right: 84px; }
+  .head-avatar img { width: 60px; height: 60px; }
 }
 
 /* education */
@@ -258,8 +267,8 @@ tr.chosen td { color: var(--text); font-weight: 600; }
   .edu-text h2 { font-size: 19px; }
 }
 
-/* the tagline is two lines, so the header is taller below 900px */
-@media (max-width: 900px) {
+/* the tagline is two lines, so the header is taller below 960px */
+@media (max-width: 960px) {
   .menu { top: 124px; }
   .about-pop { top: 126px; }
 }
@@ -268,8 +277,8 @@ tr.chosen td { color: var(--text); font-weight: 600; }
   .about-pop { top: 116px; }
 }
 @media (max-width: 420px) {
-  .menu { top: 108px; }
-  .about-pop { top: 110px; }
+  .menu { top: 112px; }
+  .about-pop { top: 114px; }
 }
 
 /* workshop page */
