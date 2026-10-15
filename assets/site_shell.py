@@ -10,6 +10,21 @@ ROOT = Path(__file__).resolve().parent.parent
 SITE = "https://rolandkeszi.github.io/"
 
 
+def external_new_tab(page: str) -> str:
+    """Make every external link (http/https/mailto) open in a new window, so no click leaves the site."""
+    def fix(m: re.Match) -> str:
+        tag = m.group(0)
+        if not re.search(r'href="(https?:|mailto:)', tag) or 'target="' in tag:
+            return tag
+        rel = re.search(r'rel="([^"]*)"', tag)
+        if rel:
+            if "noopener" not in rel.group(1).split():
+                tag = tag.replace(rel.group(0), f'rel="{rel.group(1)} noopener"')
+            return tag[:-1] + ' target="_blank">'
+        return tag[:-1] + ' target="_blank" rel="noopener">'
+    return re.sub(r"<a\b[^>]*>", fix, page)
+
+
 def css_version() -> str:
     return re.search(r"style\.css\?v=(\d+)", (ROOT / "index.html").read_text(encoding="utf-8")).group(1)
 
@@ -59,5 +74,5 @@ def write_page(lang: str, page: str, title: str, description: str, og_image: str
 </body>
 </html>
 """
-    (ROOT / ("" if lang == "en" else "hu") / page).write_text(out, encoding="utf-8", newline="\n")
+    (ROOT / ("" if lang == "en" else "hu") / page).write_text(external_new_tab(out), encoding="utf-8", newline="\n")
     print("wrote", ("" if lang == "en" else "hu/") + page)
