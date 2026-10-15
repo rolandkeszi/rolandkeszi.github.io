@@ -57,17 +57,16 @@ def build(lang: str) -> None:
     scholar_logo = f"{prefix}assets/img/logos/google-scholar.svg"
     scholar = banner(
         "scholar", f"https://scholar.google.com/citations?user={SCHOLAR_ID}&hl={lang}",
-        "", f"Google {t['scholar_name']}", t["scholar"], t,
+        scholar_logo, f"Google {t['scholar_name']}", t["scholar"], t,
         f'        <img class="pub-deco" src="{scholar_logo}" alt="" aria-hidden="true">\n',
         f'<span class="pub-wordmark"><img src="{prefix}assets/img/logos/google.svg" alt="Google" width="118" height="40">'
         f'<span>{t["scholar_name"]}</span></span>',
     )
     mtmt = banner(
         "mtmt", f"https://m2.mtmt.hu/gui2/?type=authors&mode=browse&sel={MTMT_ID}&view=simpleList",
-        "", t["mtmt_name"], t["mtmt"], t,
+        f"{prefix}assets/img/logos/mtmt.svg", t["mtmt_name"], t["mtmt"], t,
         '        <span class="pub-deco pub-deco-text" aria-hidden="true">mt<br>mt</span>\n',
-        f'<span class="pub-mtmt-word" lang="hu"><img src="{prefix}assets/img/logos/mtmt.svg" alt="MTMT" width="52" height="52">'
-        '<span>Magyar Tudományos<br>Művek Tára</span></span>',
+        '<span class="pub-mtmt-word" lang="hu">Magyar Tudományos<br>Művek Tára</span>',
     )
     body = f"""    <section class="case-head cert-head">
       <h1>{t["h1"]}</h1>
