@@ -12,14 +12,14 @@ from site_shell import write_page
 # Newest first. Text pairs are (English, Hungarian).
 DEGREES = [
     {
-        "year": "2026", "number": "MIFE-TL-11/2026", "logo": "pannon.png",
+        "year": "2026", "number": "MIFE-TL-112026", "logo": "pannon.png",
         "school": ("University of Pannonia - Faculty of Engineering", "Pannon Egyetem - Mérnöki Kar"),
         "degree": ("Data and Systems Scientist and Artificial Intelligence Solution Development Specialist",
                    "Mesterséges intelligencia megoldásokat fejlesztő adat- és rendszertudományi szakember"),
         "detail": ("Postgraduate artificial intelligence specialist engineer programme", "Mesterséges intelligencia szakmérnök szakember képzés"),
     },
     {
-        "year": "2006", "number": "P-1985/2006", "logo": "elte.png",
+        "year": "2006", "number": "P-19852006", "logo": "elte.png",
         "school": ("Eötvös Loránd University - Faculty of Social Sciences", "Eötvös Loránd Tudományegyetem - Társadalomtudományi Kar"),
         "degree": ("PhD in Sociology", "Doktori (PhD) fokozat, szociológia"),
         "detail": ("Sociological sciences, quantitative empirical sociology",
@@ -29,7 +29,7 @@ DEGREES = [
                    "A távmunkavégzés munkaszervezeti bevezetését meghatározó tényezők a mikro-, kis- és középvállalati szektorban - Szervezetszociológiai modellkísérlet öt európai régió vállalatának kvantitatív vizsgálatával"),
     },
     {
-        "year": "2003", "number": "MBA(m)-032/2003", "logo": "corvinus.svg",
+        "year": "2003", "number": "MBA-0322003", "logo": "corvinus.svg",
         "school": ("Corvinus University - Corvinus Business School", "Budapesti Corvinus Egyetem - Corvinus Business School"),
         "degree": ("Master of Business Administration (MBA)", "Master of Business Administration (MBA)"),
         "detail": ("Awarded by the Budapest University of Economic Sciences and Public Administration, now Corvinus University of Budapest",
@@ -39,7 +39,7 @@ DEGREES = [
                    'Magatartástudományi szervezetdiagnosztika - A változással szembeni ellenállás stádiumainak vizsgálata: Az "X" Kft szervezeti átalakításának tapasztalatai'),
     },
     {
-        "year": "1998", "number": "44/1998", "logo": ("elte-tatk-en.svg", "elte-tatk-hu.svg"),
+        "year": "1998", "number": "441998", "logo": ("elte-tatk-en.svg", "elte-tatk-hu.svg"),
         "school": ("ELTE - Faculty of Social Sciences", "ELTE - Társadalomtudományi Kar"),
         "degree": ("Master's degree in Sociology", "Egyetemi mesterdiploma, szociológia"),
         "detail": ("Specialisations: research sociology; change management",
