@@ -4,12 +4,12 @@
 """
 from site_shell import write_page
 
-# Photos at the end of the page, top to bottom: (file, width, height, English alt, Hungarian alt).
+# Photos at the end of the page, left to right: (file, width, height, English alt, Hungarian alt).
 # Copies in assets/img/about/ are re-saved without any metadata.
 PHOTOS = [
     ("zoe-1.jpg", 443, 590, "Roland holding Zoé, his Labrador, as a puppy", "Roland a kölyökkutya Zoéval, a labradorjával"),
-    ("zoe-2.jpg", 443, 590, "Roland carrying Zoé, now fully grown", "Roland a már felnőtt Zoéval a karjában"),
     ("zoe-3.jpg", 684, 912, "Zoé smiling into the camera", "Zoé mosolyog a kamerába"),
+    ("zoe-2.jpg", 443, 590, "Roland carrying Zoé, now fully grown", "Roland a már felnőtt Zoéval a karjában"),
 ]
 
 TEXT = {
