@@ -9,9 +9,31 @@ from site_shell import ROOT, write_page
 
 REG_URL = "https://keszi.krolify.hu/hu/kutatas/elte-innofair/"
 
-# Cumulative registrations on the workshop's own page at the end of each day,
-# 8-30 September 2026, read from the labelled values of the original chart.
-CUMULATIVE = [0, 11, 15, 16, 16, 22, 32, 41, 43, 55, 64, 66, 69, 71, 74, 74, 74, 75, 76, 77, 87, 91, 97]
+# Completed registrations on the workshop's own page, September 2026: day -> the hour
+# (local time, rounded down) of each registration. Exact times are deliberately not kept.
+REG_HOURS = {
+    8: [18, 18, 18, 20, 20, 20, 21, 21, 21, 22, 23],
+    9: [8, 12, 14, 14],
+    10: [10],
+    12: [13, 14, 16, 16, 17, 23],
+    13: [8, 9, 12, 12, 14, 14, 15, 18, 21, 21],
+    14: [10, 10, 13, 13, 14, 15, 17, 17, 20],
+    15: [8, 19],
+    16: [9, 11, 12, 12, 13, 13, 14, 15, 15, 18, 20, 20],
+    17: [14, 14, 16, 17, 18, 19, 19, 21, 23],
+    18: [9, 13],
+    19: [8, 13, 13],
+    20: [12, 12],
+    21: [0, 15, 21],
+    24: [10],
+    25: [7],
+    26: [18],
+    27: [0, 10, 10, 11, 11, 12, 14, 15, 16, 21],
+    28: [10, 11, 18, 23],
+    29: [9, 9, 9, 14, 19],
+    30: [18],
+}
+REG_CLOSE = (30, 19 + 50 / 60)  # the form closed on 30 September at 19:50
 
 # (file stem, English caption, Hungarian caption) in display order.
 PHOTOS = [
@@ -78,7 +100,7 @@ TEXT = {
                 "The speakers took part as volunteers, without a fee. Our goal is for the workshop to start new collaborations between researchers, developers, civil initiatives and the special needs education profession.",
             ]),
         ],
-        "figure_caption": "Figure 1. Cumulative number of registrations on the workshop's own registration page, 8–30 September 2026 (n = 97).",
+        "figure_caption": "Figure 1. Cumulative number of registrations on the workshop's own registration page, 8–30 September 2026, by hour of registration; red numbers are end-of-day totals (n = 97).",
         "photos": "Photos",
         "links": [("Workshop registration page", REG_URL)],
         "back": "← All projects",
@@ -137,7 +159,7 @@ TEXT = {
                 "Az előadók önkéntesként, díjazás nélkül vettek részt a projektben; célunk, hogy a workshop nyomán új együttműködések induljanak a kutatók, a fejlesztők, a civil kezdeményezések és a gyógypedagógiai szakma között.",
             ]),
         ],
-        "figure_caption": "1. ábra. A workshop saját regisztrációs oldalán regisztrálók kumulált száma, 2026. szeptember 8–30. (n = 97)",
+        "figure_caption": "1. ábra. A workshop saját regisztrációs oldalán regisztrálók kumulált száma, 2026. szeptember 8–30., a regisztráció órája szerint; a piros számok a napi záró értékek (n = 97)",
         "photos": "Fotók",
         "links": [("A workshop regisztrációs oldala", REG_URL)],
         "back": "← Összes projekt",
@@ -148,48 +170,54 @@ TEXT = {
 
 
 def chart(lang: str) -> None:
-    """Theme-aware step chart of cumulative registrations, in the style of the other site charts."""
+    """Theme-aware step chart: one step per registration (by hour), with the running total at the end of each day."""
     en = lang == "en"
-    W, H, L, R, T, B = 860, 420, 64, 24, 70, 360
-    days = list(range(8, 31))
-    x = lambda i: L + (W - L - R) * i / (len(days) - 1)
+    W, H, L, R, T, B = 860, 420, 64, 24, 78, 360
+    first, (last_day, last_hour) = 8, REG_CLOSE
+    span = (last_day - first) * 24 + last_hour
+    x = lambda day, hour: L + (W - L - R) * ((day - first) * 24 + hour) / span
     y = lambda v: B - (B - T) * v / 100
-    pts, prev = [], None
-    for i, v in enumerate(CUMULATIVE):
-        if prev is not None:
-            pts.append(f"{x(i):.1f},{y(prev):.1f}")
-        pts.append(f"{x(i):.1f},{y(v):.1f}")
-        prev = v
+    pts, n = [f"{x(first, 0):.1f},{y(0):.1f}"], 0
+    for day in sorted(REG_HOURS):
+        for hour in REG_HOURS[day]:
+            pts += [f"{x(day, hour):.1f},{y(n):.1f}", f"{x(day, hour):.1f},{y(n + 1):.1f}"]
+            n += 1
+    pts.append(f"{x(*REG_CLOSE):.1f},{y(n):.1f}")
     line = " ".join(pts)
-    area = f"{x(0):.1f},{y(0):.1f} " + line + f" {x(len(days) - 1):.1f},{y(0):.1f}"
+    area = line + f" {x(*REG_CLOSE):.1f},{y(0):.1f}"
     grid = "".join(f'<line class="g" x1="{L}" x2="{W - R}" y1="{y(v):.1f}" y2="{y(v):.1f}"/>'
                    f'<text x="{L - 10}" y="{y(v) + 4:.1f}" font-size="12" class="t2" text-anchor="end">{v}</text>' for v in range(0, 101, 20))
-    xt = "".join(f'<text x="{x(i):.1f}" y="{B + 20}" font-size="12" class="t2" text-anchor="middle">{d}</text>'
-                 for i, d in enumerate(days) if d % 2 == 0)
-    marks = {1: 11, 6: 32, 9: 55, 14: 74, 20: 87, 22: 97}
-    labels = "".join(f'<circle cx="{x(i):.1f}" cy="{y(v):.1f}" r="3.5" fill="var(--line)"/>'
-                     f'<text x="{x(i) - 6:.1f}" y="{y(v) - 9:.1f}" font-size="12" font-weight="600" text-anchor="end">{v}</text>' for i, v in marks.items())
+    days = list(range(first, last_day + 1))
+    xt = "".join(f'<line class="g" x1="{x(d, 0):.1f}" x2="{x(d, 0):.1f}" y1="{B}" y2="{B + 5}"/>'
+                 f'<text x="{x(d, 12):.1f}" y="{B + 20}" font-size="11" class="t2" text-anchor="middle">{d}</text>' for d in days)
+    # Running total at the end of each day, labelled above the curve.
+    labels = ""
+    for d in days:
+        v = sum(len(REG_HOURS.get(k, [])) for k in range(first, d + 1))
+        ex = x(*REG_CLOSE) if d == last_day else x(d + 1, 0)
+        labels += (f'<circle cx="{ex:.1f}" cy="{y(v):.1f}" r="2.5" class="lab"/>'
+                   f'<text x="{ex:.1f}" y="{y(v) - 8:.1f}" font-size="11" font-weight="700" class="lab" text-anchor="middle">{v}</text>')
     title = "Registrations for the workshop" if en else "Regisztrációk a workshopra"
-    sub = ("Cumulative, on the workshop's own registration page · September 2026 · n = 97" if en
-           else "Kumulált szám, a workshop saját regisztrációs oldalán · 2026. szeptember · n = 97")
+    sub = ("Cumulative, on the workshop's own registration page · each step is one registration, red numbers are end-of-day totals · n = 97" if en
+           else "Kumulált szám a workshop saját regisztrációs oldalán · minden lépcső egy regisztráció, a piros számok a napi záró értékek · n = 97")
     xlab = "Day of September 2026" if en else "2026. szeptember napjai"
-    desc = ("Registrations grew from 11 on 9 September to 74 by 22 September, levelled off, then rose again in the final days to 97 on 30 September."
-            if en else "A regisztrációk száma szeptember 9-i 11-ről szeptember 22-ig 74-re nőtt, majd megtorpant, és az utolsó napokban szeptember 30-ig 97-re emelkedett.")
+    desc = ("Registrations grew from 11 on 8 September to 74 by 21 September, barely moved for a week, then rose again in the final days to 97 when the form closed on 30 September."
+            if en else "A regisztrációk száma szeptember 8-i 11-ről szeptember 21-ig 74-re nőtt, egy hétig alig változott, majd az utolsó napokban 97-re emelkedett a szeptember 30-i lezárásig.")
     svg = f"""<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H + 30}" viewBox="0 0 {W} {H + 30}" role="img" aria-labelledby="t d">
 <title id="t">{title}</title>
 <desc id="d">{desc}</desc>
 <style>
-svg{{--bg:#ffffff;--t1:#1f2328;--t2:#59636e;--grid:#d1d9e0;--line:#2a78d6;--fill:rgba(42,120,214,.12)}}
-@media (prefers-color-scheme: dark){{svg{{--bg:#0d1117;--t1:#f0f6fc;--t2:#9198a1;--grid:#30363d;--line:#3987e5;--fill:rgba(57,135,229,.18)}}}}
+svg{{--bg:#ffffff;--t1:#1f2328;--t2:#59636e;--grid:#d1d9e0;--line:#2a78d6;--fill:rgba(42,120,214,.12);--lab:#c4362c}}
+@media (prefers-color-scheme: dark){{svg{{--bg:#0d1117;--t1:#f0f6fc;--t2:#9198a1;--grid:#30363d;--line:#3987e5;--fill:rgba(57,135,229,.18);--lab:#f2685f}}}}
 text{{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;fill:var(--t1)}}
-.t2{{fill:var(--t2)}} .g{{stroke:var(--grid);stroke-width:1}}
+.t2{{fill:var(--t2)}} .g{{stroke:var(--grid);stroke-width:1}} .lab{{fill:var(--lab)}}
 </style>
 <rect width="{W}" height="{H + 30}" rx="8" fill="var(--bg)"/>
 <text x="24" y="34" font-size="18" font-weight="600">{title}</text>
-<text x="24" y="54" font-size="13" class="t2">{sub}</text>
+<text x="24" y="54" font-size="12.5" class="t2">{sub}</text>
 {grid}
 <polygon points="{area}" fill="var(--fill)"/>
-<polyline points="{line}" fill="none" stroke="var(--line)" stroke-width="2.5" stroke-linejoin="round"/>
+<polyline points="{line}" fill="none" stroke="var(--line)" stroke-width="2" stroke-linejoin="miter"/>
 {labels}
 {xt}
 <text x="{(L + W - R) / 2:.0f}" y="{B + 44}" font-size="12" class="t2" text-anchor="middle">{xlab}</text>
