@@ -351,6 +351,8 @@ footer a { color: var(--link); }
 .about-text p { margin: 0 0 22px; max-width: 680px; font-size: 17px; line-height: 1.7; }
 .about-text .about-lead { font-size: 21px; line-height: 1.65; color: var(--text); padding-left: 20px; border-left: 2px solid var(--line); }
 .about-text .about-lead strong { font-weight: 600; }
+.about-lead a { color: var(--text); text-decoration: underline; text-decoration-thickness: 1px; text-decoration-color: color-mix(in srgb, var(--link) 45%, transparent); text-underline-offset: 4px; }
+.about-lead a:hover, .about-lead a:hover strong { color: var(--link); text-decoration-color: var(--link); }
 .about-text .about-photos-caption { margin: 44px 0 0; font-size: 19px; font-style: italic; color: var(--text); }
 .about-photos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin: 18px 0 0; }
 .about-photos .photo-link { display: block; aspect-ratio: 3 / 4; border-radius: 10px; overflow: hidden; cursor: zoom-in; background: var(--line); }
