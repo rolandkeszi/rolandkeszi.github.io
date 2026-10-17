@@ -39,10 +39,6 @@ a:hover { text-decoration: underline; }
 /* header */
 .top { position: sticky; top: 0; z-index: 10; background: var(--bg); border-bottom: 1px solid var(--line); font-size: 16px; }
 .top-inner { max-width: 1100px; margin: 0 auto; padding: 6px 24px 0; display: flex; justify-content: space-between; align-items: center; }
-.about-btn { font: inherit; color: var(--muted); background: none; border: 0; padding: 0; cursor: pointer; }
-.about-btn:hover { color: var(--text); }
-.about-pop { position: fixed; inset: auto; top: 124px; right: max(16px, calc(50vw - 526px)); margin: 0; max-width: min(380px, calc(100vw - 32px)); padding: 18px 20px; border: 1px solid var(--line); border-radius: 12px; background: var(--bg); color: var(--text-2); font-size: 15px; line-height: 1.6; box-shadow: 0 12px 40px rgba(0, 0, 0, .16); }
-.about-pop p { margin: 0; }
 .top .name { color: var(--text); font-weight: 600; font-size: 18px; white-space: nowrap; }
 .top .name { display: inline-flex; flex-direction: column; line-height: 1.25; }
 .top .name:hover { text-decoration: none; }
@@ -223,8 +219,8 @@ tr.chosen td { color: var(--text); font-weight: 600; }
   .top nav .head-avatar { position: absolute; right: 24px; bottom: 0; margin: 0; }
   .menu { display: block; position: fixed; inset: auto; top: 108px; right: 16px; min-width: 230px; padding: 8px; border: 1px solid var(--line); border-radius: 12px; background: var(--bg); box-shadow: 0 12px 40px rgba(0, 0, 0, .16); }
   .menu:not(:popover-open) { display: none; }
-  .top nav .menu > a, .menu > .about-btn { display: block; width: 100%; text-align: left; margin: 0; padding: 10px 14px; border-radius: 8px; font-size: 16px; color: var(--text); }
-  .top nav .menu > a:hover, .menu > .about-btn:hover { background: color-mix(in srgb, var(--line) 60%, transparent); }
+  .top nav .menu > a { display: block; width: 100%; text-align: left; margin: 0; padding: 10px 14px; border-radius: 8px; font-size: 16px; color: var(--text); }
+  .top nav .menu > a:hover { background: color-mix(in srgb, var(--line) 60%, transparent); }
   .top nav .menu > a[aria-current="page"] { color: var(--link); }
 }
 @media (max-width: 680px) {
@@ -237,7 +233,6 @@ tr.chosen td { color: var(--text); font-weight: 600; }
   .lang { gap: 6px; }
   .lang svg { width: 20px; height: 14px; }
   .menu { top: 98px; }
-  .about-pop { top: 100px; }
 }
 @media (max-width: 420px) {
   .top-inner { min-height: 74px; padding-right: 94px; column-gap: 12px; }
@@ -273,15 +268,12 @@ tr.chosen td { color: var(--text); font-weight: 600; }
 /* the tagline is two lines, so the header is taller below 960px */
 @media (max-width: 960px) {
   .menu { top: 124px; }
-  .about-pop { top: 126px; }
 }
 @media (max-width: 680px) {
   .menu { top: 114px; }
-  .about-pop { top: 116px; }
 }
 @media (max-width: 420px) {
   .menu { top: 112px; }
-  .about-pop { top: 114px; }
 }
 
 /* workshop page */
@@ -308,7 +300,6 @@ details.refs li { margin: 0 0 8px; color: var(--text-2); overflow-wrap: anywhere
   .globe-row { flex-direction: column; align-items: center; text-align: left; gap: 16px; }
   .globe { width: 130px; height: 130px; }
 }
-.about-pop .about-more { margin-top: 10px; font-size: 14px; }
 footer a { color: var(--link); }
 
 /* publications */
@@ -350,4 +341,17 @@ footer a { color: var(--link); }
   .pub-desc { font-size: 16px; }
   .pub-deco { width: 200px; height: 200px; right: -40px; bottom: -50px; }
   .pub-deco-text { width: auto; height: auto; font-size: 110px; }
+}
+
+/* About page */
+.about-head h1 { margin-bottom: 6px; }
+.about-name { margin: 0; font-size: 18px; font-weight: 600; color: var(--text); }
+.about-name span { font-weight: 400; color: var(--muted); }
+.about-text { padding: 36px 0 8px; }
+.about-text p { margin: 0 0 22px; max-width: 680px; font-size: 17px; line-height: 1.7; }
+.about-text .about-lead { font-size: 21px; line-height: 1.65; color: var(--text); padding-left: 20px; border-left: 2px solid var(--line); }
+.about-text .about-lead strong { font-weight: 600; }
+.about-links { display: flex; flex-wrap: wrap; gap: 10px 26px; margin-top: 34px; padding-top: 22px; border-top: 1px solid var(--line); font-size: 15px; }
+@media (max-width: 560px) {
+  .about-text .about-lead { font-size: 18.5px; padding-left: 14px; }
 }

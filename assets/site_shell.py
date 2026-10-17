@@ -1,6 +1,6 @@
-"""Shared page shell for the generated pages (certificates, education).
+"""Shared page shell for the generated pages (about, certificates, education).
 
-The header, About/photo popovers and footer are copied from index.html and
+The header, photo popover and footer are copied from index.html and
 hu/index.html, so generated pages always match the hand-written ones.
 """
 import re
@@ -42,7 +42,7 @@ def write_page(lang: str, page: str, title: str, description: str, og_image: str
     header = header.replace(f'<a href="{page}">', f'<a href="{page}" aria-current="page">')
     header = re.sub(r'(<a[^>]*?href=")[^"]*(" hreflang="en")', rf"\g<1>{en_href}\2", header)
     header = re.sub(r'(<a[^>]*?href=")[^"]*(" hreflang="hu")', rf"\g<1>{hu_href}\2", header)
-    popovers = re.search(r'<div id="photo-large".*?</div>\s*<div id="about-info".*?</div>', home, re.S).group(0)
+    popovers = re.search(r'<div id="photo-large".*?</button></div>', home, re.S).group(0)
     footer = re.search(r"<footer>.*?</footer>", home, re.S).group(0)
 
     out = f"""<!doctype html>
