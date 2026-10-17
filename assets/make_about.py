@@ -21,6 +21,7 @@ TEXT = {
         "role": "AI &amp; Data Science",
         "lead": "I seek to explain, understand and predict the phenomena of the world around us. My work builds on the expert knowledge I gained in a postgraduate <strong>artificial intelligence specialist engineer</strong> programme at a faculty of engineering, the business and leadership knowledge of a <strong>Master of Business Administration</strong> programme at a university of economics, and further specialised studies at a faculty of social sciences in <strong>empirical research sociology</strong> and <strong>change management</strong>, and it is backed by decades of professional experience.",
         "body": "On these pages I share selected excerpts from some of my projects in artificial intelligence and data science.",
+        "photos_caption": "The most important law of the world, the law of change, was taught to me by my furry child! 😊",
         "enlarge": "Enlarge",
         "close": "Close",
         "links": [("./#projects", "Projects"), ("education.html", "Education"), ("certificates.html", "Certificates"),
@@ -32,8 +33,9 @@ TEXT = {
         "h1": "Rólam",
         "name": "Keszi Roland",
         "role": "Mesterséges intelligencia és adattudomány",
-        "lead": "A minket körülvevő világ jelenségeit igyekszem magyarázni, megérteni és előre jelezni mérnöki kar, <strong>mesterséges intelligencia szakmérnöki</strong> képzésén szerzett szakértői, közgazdaságtudományi egyetem <strong>Master of Business Administration</strong> képzésen szerzett üzleti és vezetői, valamint társadalomtudományi kar, <strong>empirikus kutató szociológus</strong>, valamint <strong>változásmenedzser</strong> szakirányain szerzett szakirányú többlet tanulmányaimmal megalapozva és több évtizedes szakmai tapasztalataimmal alátámasztva.",
+        "lead": "A minket körülvevő világ jelenségeit igyekszem magyarázni, megérteni és előre jelezni mérnöki kar, <strong>mesterséges intelligencia szakmérnöki</strong> képzésén szerzett szakértői, közgazdaságtudományi egyetem <strong>Master of Business Administration</strong> képzésen szerzett üzleti és vezetői, társadalomtudományi kar, <strong>empirikus kutató szociológus</strong>, valamint <strong>változásmenedzser</strong> szakirányain szerzett szakirányú többlet tanulmányaimmal megalapozva és több évtizedes szakmai tapasztalataimmal alátámasztva.",
         "body": "Ezeken az oldalakon a mesterséges intelligencia és data science területeiről közlök néhány projektemből szemelvényeket.",
+        "photos_caption": "A legjelentősebb világtörvényre, a változás törvényére szőrös gyermekem tanított meg! 😊",
         "enlarge": "Nagyítás",
         "close": "Bezárás",
         "links": [("./#projects", "Projektek"), ("education.html", "Végzettség"), ("certificates.html", "Tanúsítványok"),
@@ -59,6 +61,7 @@ def build(lang: str) -> None:
     <article class="about-text">
       <p class="about-lead">{t["lead"]}</p>
       <p>{t["body"]}</p>
+      <p class="about-photos-caption">{t["photos_caption"]}</p>
       <div class="about-photos">
 {photos}
       </div>
