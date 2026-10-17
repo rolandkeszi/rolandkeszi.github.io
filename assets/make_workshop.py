@@ -3,11 +3,13 @@ and its registration chart (assets/img/workshop/registrations-{en,hu}.svg).
 
     python assets/make_workshop.py
 """
+import re
 from pathlib import Path
 
 from site_shell import ROOT, write_page
 
 REG_URL = "https://keszi.krolify.hu/hu/kutatas/elte-innofair/"
+A_OPEN = f'<a href="{REG_URL}">'  # link to the registration page inside running text
 
 # Completed registrations on the workshop's own page, September 2026: day -> the hour
 # (local time, rounded down) of each registration. Exact times are deliberately not kept.
@@ -91,7 +93,7 @@ TEXT = {
                 "<li><strong>Zoltán Répási</strong> (hahodori): a live demonstration of <em>Talkie</em>, a browser-based AAC (augmentative and alternative communication) app, and the experience gained with it. A concrete, practical solution that makes everyday communication easier for people with disabilities and their families.</li></ul>",
             ]),
             ("Registrations and audience", [
-                "<strong>129 people registered</strong> for the workshop: 97 on the workshop's own registration page and 32 on the Innofair platform. Figure 1 shows how the registrations on our own page built up over time.",
+                "<strong>129 people registered</strong> for the workshop: 97 on the " + A_OPEN + "workshop's own registration page</a> and 32 on the Innofair platform. Figure 1 shows how the registrations on our own page built up over time.",
                 "FIGURE",
                 "Part of the audience were current and future special needs teachers, who work directly with people who use AAC tools. They were joined by researchers, industry experts and other interested visitors. Participants asked a great many questions, ranging from the technical side of language technology through the use of the robot interviewer to the human side and personal involvement. After the official close many stayed on, and the workshop ended in informal conversations.",
             ]),
@@ -100,7 +102,7 @@ TEXT = {
                 "The speakers took part as volunteers, without a fee. Our goal is for the workshop to start new collaborations between researchers, developers, civil initiatives and the special needs education profession.",
             ]),
         ],
-        "figure_caption": "Figure 1. Cumulative number of registrations on the workshop's own registration page, 8–30 September 2026, by hour of registration; red numbers are end-of-day totals (n = 97).",
+        "figure_caption": "Figure 1. Cumulative number of registrations on the " + A_OPEN + "workshop's own registration page</a>, 8–30 September 2026, by hour of registration; red numbers are end-of-day totals (n = 97).",
         "photos": "Photos",
         "links": [("Workshop registration page", REG_URL)],
         "back": "← All projects",
@@ -150,7 +152,7 @@ TEXT = {
                 "<li><strong>Répási Zoltán</strong> (hahodori): élő bemutatón ismertette a <em>Talkie</em> nevű, böngészőalapú AAC-alkalmazást (augmentatív és alternatív kommunikáció) és az azzal szerzett tapasztalatokat: egy konkrét, gyakorlati megoldást, amely a fogyatékossággal élő emberek és családtagjaik mindennapi kommunikációját könnyíti meg.</li></ul>",
             ]),
             ("Regisztrációk és közönség", [
-                "A workshopra <strong>129-en regisztráltak</strong>: 97-en a workshop saját regisztrációs oldalán, 32-en az Innofair felületén. A saját oldalon történt regisztrációk időbeli alakulását az 1. ábra mutatja.",
+                "A workshopra <strong>129-en regisztráltak</strong>: 97-en a " + A_OPEN + "workshop saját regisztrációs oldalán</a>, 32-en az Innofair felületén. A saját oldalon történt regisztrációk időbeli alakulását az 1. ábra mutatja.",
                 "FIGURE",
                 "A közönség egy részét jelenlegi és leendő gyógypedagógusok adták, akik munkájuk során közvetlenül érintettek az AAC-eszközöket használó emberekkel; mellettük kutatók, ipari szakemberek és érdeklődők is eljöttek. A résztvevők rengeteg kérdést tettek fel, amelyek a nyelvtechnológia technológiai kérdéseitől a robot kérdezőbiztos használatán át egészen az emberi oldalig, a személyes érintettség kérdéséig értek. A program hivatalos zárása után is sokan a helyszínen maradtak, és a workshop kötetlen, egymás közötti beszélgetésekkel zárult.",
             ]),
@@ -159,7 +161,7 @@ TEXT = {
                 "Az előadók önkéntesként, díjazás nélkül vettek részt a projektben; célunk, hogy a workshop nyomán új együttműködések induljanak a kutatók, a fejlesztők, a civil kezdeményezések és a gyógypedagógiai szakma között.",
             ]),
         ],
-        "figure_caption": "1. ábra. A workshop saját regisztrációs oldalán regisztrálók kumulált száma, 2026. szeptember 8–30., a regisztráció órája szerint; a piros számok a napi záró értékek (n = 97)",
+        "figure_caption": "1. ábra. A " + A_OPEN + "workshop saját regisztrációs oldalán</a> regisztrálók kumulált száma, 2026. szeptember 8–30., a regisztráció órája szerint; a piros számok a napi záró értékek (n = 97)",
         "photos": "Fotók",
         "links": [("A workshop regisztrációs oldala", REG_URL)],
         "back": "← Összes projekt",
@@ -232,7 +234,7 @@ def build(lang: str) -> None:
     img = f"{prefix}assets/img/workshop/"
     facts = "\n".join(f"        <div><dt>{k}</dt><dd>{v}</dd></div>" for k, v in t["facts"])
     links = " ".join(f'<a href="{u}" target="_blank" rel="noopener">{n} ↗</a>' for n, u in t["links"])
-    figure = (f'      <figure><img src="{img}registrations-{lang}.svg?v=2" alt="{t["figure_caption"]}" width="860" height="450">'
+    figure = (f'      <figure><img src="{img}registrations-{lang}.svg?v=2" alt="{re.sub('<[^>]+>', '', t["figure_caption"])}" width="860" height="450">'
               f'<figcaption>{t["figure_caption"]}</figcaption></figure>')
     sections = []
     for h, paras in t["sections"]:
