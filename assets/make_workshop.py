@@ -232,7 +232,7 @@ def build(lang: str) -> None:
     img = f"{prefix}assets/img/workshop/"
     facts = "\n".join(f"        <div><dt>{k}</dt><dd>{v}</dd></div>" for k, v in t["facts"])
     links = " ".join(f'<a href="{u}" target="_blank" rel="noopener">{n} ↗</a>' for n, u in t["links"])
-    figure = (f'      <figure><img src="{img}registrations-{lang}.svg" alt="{t["figure_caption"]}" width="860" height="450">'
+    figure = (f'      <figure><img src="{img}registrations-{lang}.svg?v=2" alt="{t["figure_caption"]}" width="860" height="450">'
               f'<figcaption>{t["figure_caption"]}</figcaption></figure>')
     sections = []
     for h, paras in t["sections"]:
