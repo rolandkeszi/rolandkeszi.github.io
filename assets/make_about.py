@@ -35,7 +35,7 @@ TEXT = {
         "role": "Mesterséges intelligencia és adattudomány",
         "lead": "A minket körülvevő világ jelenségeit igyekszem magyarázni, megérteni és előre jelezni mérnöki kar, <strong>mesterséges intelligencia szakmérnöki</strong> képzésén szerzett szakértői, közgazdaságtudományi egyetem <strong>Master of Business Administration</strong> képzésen szerzett üzleti és vezetői, társadalomtudományi kar, <strong>empirikus kutató szociológus</strong>, valamint <strong>változásmenedzser</strong> szakirányain szerzett szakirányú többlet tanulmányaimmal megalapozva és több évtizedes szakmai tapasztalataimmal alátámasztva.",
         "body": "Ezeken az oldalakon a mesterséges intelligencia és data science területeiről közlök néhány projektemből szemelvényeket.",
-        "photos_caption": "A legjelentősebb világtörvény, a változás törvényének megértésére szőrös gyermekem tanított meg, melyet az alábbi strukturálatlan adathalmazokat (pixel) tartalmazó vizualizáció szemléltet. 😊",
+        "photos_caption": "A legjelentősebb világtörvénynek, a változás törvényének megértésére szőrös gyermekem tanított meg, melyet az alábbi strukturálatlan adathalmazokat (pixel) tartalmazó vizualizáció szemléltet. 😊",
         "enlarge": "Nagyítás",
         "close": "Bezárás",
         "links": [("./#projects", "Projektek"), ("education.html", "Végzettség"), ("certificates.html", "Tanúsítványok"),
